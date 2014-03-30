@@ -351,6 +351,12 @@ namespace SLApp_Beta
 #endif
 		}
 
+        private void studentLearningExperiences_DataGrid_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
+        {
+            Learning_Experience x = e.Row.Item as Learning_Experience;
+            x.Student_ID = student.Student_ID;
+        }
+
         #region Notes
 
         
