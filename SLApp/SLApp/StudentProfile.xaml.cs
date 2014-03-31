@@ -21,7 +21,15 @@ namespace SLApp_Beta
         private double myWidth;
         private double myHeight;
 
-        private List<string> standing = new List<string> {"Freshman", "Sophomore", "Junior", "Senior"};
+        private string[] semesters = new string[] {"Fall", "Jan", "Spring"};
+        private string[] servicelearningtype = new string[]
+            {"Capstone Class",
+            "Community Based Research", 
+            "Discipline-based", 
+            "Problem-based", 
+            "Pure Service", 
+            "Service Internship"};
+
 
         
 
@@ -348,12 +356,19 @@ namespace SLApp_Beta
 
 		private void StudentLearningExperiences_DataGrid_OnAutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
 		{
-			if (e.PropertyName == "ID") e.Cancel = true;
-            if (e.PropertyName == "Semester") {
+            if (e.PropertyName == "ID") {
+                e.Cancel = true;
+            } else if (e.PropertyName == "Semester") {
                 DataGridComboBoxColumn Combo = new DataGridComboBoxColumn();
                 Combo.TextBinding = new Binding(e.PropertyName);
-                Combo.ItemsSource = standing;
+                Combo.ItemsSource = semesters;
                 Combo.Header = "Semester";
+                e.Column = Combo;
+            } else if (e.PropertyName == "TypeofLearning") {
+                DataGridComboBoxColumn Combo = new DataGridComboBoxColumn();
+                Combo.TextBinding = new Binding(e.PropertyName);
+                Combo.ItemsSource = servicelearningtype;
+                Combo.Header = "Type of Learning";
                 e.Column = Combo;
             }
 #if Demo
