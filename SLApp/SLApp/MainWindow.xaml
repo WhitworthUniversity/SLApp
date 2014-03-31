@@ -59,8 +59,8 @@
                     <ComboBox Height="23" HorizontalAlignment="Left" Margin="380,162,0,0" Name="serviceType_CBX" VerticalAlignment="Top" Width="120" DataContext="{Binding}" TabIndex="7" IsEditable="True">
 						<ComboBoxItem Content="Capstone Class" />
 						<ComboBoxItem Content="Community Based Research" />
-						<ComboBoxItem Content="Discipline-based" />
-						<ComboBoxItem Content="Problem-based" />
+						<ComboBoxItem Content="Discipline-Based" />
+						<ComboBoxItem Content="Problem-Based" />
 						<ComboBoxItem Content="Pure Service" />
 						<ComboBoxItem Content="Service Internship" />
 					</ComboBox>

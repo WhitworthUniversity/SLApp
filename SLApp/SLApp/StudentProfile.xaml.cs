@@ -25,8 +25,8 @@ namespace SLApp_Beta
         private string[] servicelearningtype = new string[]
             {"Capstone Class",
             "Community Based Research", 
-            "Discipline-based", 
-            "Problem-based", 
+            "Discipline-Based", 
+            "Problem-Based", 
             "Pure Service", 
             "Service Internship"};
 
