@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace SLApp_Beta
 {
@@ -19,6 +20,8 @@ namespace SLApp_Beta
 
         private double myWidth;
         private double myHeight;
+
+        private List<string> standing = new List<string> {"Freshman", "Sophomore", "Junior", "Senior"};
 
         
 
@@ -346,6 +349,13 @@ namespace SLApp_Beta
 		private void StudentLearningExperiences_DataGrid_OnAutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
 		{
 			if (e.PropertyName == "ID") e.Cancel = true;
+            if (e.PropertyName == "Semester") {
+                DataGridComboBoxColumn Combo = new DataGridComboBoxColumn();
+                Combo.TextBinding = new Binding(e.PropertyName);
+                Combo.ItemsSource = standing;
+                Combo.Header = "Semester";
+                e.Column = Combo;
+            }
 #if Demo
 			if (e.PropertyName == "Student_ID") e.Cancel = true;
 #endif
