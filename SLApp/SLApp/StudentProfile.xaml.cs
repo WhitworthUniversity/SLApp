@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace SLApp_Beta
 {
@@ -19,6 +20,18 @@ namespace SLApp_Beta
 
         private double myWidth;
         private double myHeight;
+
+        // ComboBox choice listings for autocolumn generation, see
+        // StudentLearningExperiences_DataGrid_OnAutoGeneratingColumn
+        private string[] semesters = new string[] {"Fall", "Jan", "Spring"};
+        private string[] servicelearningtype = new string[]
+            {"Capstone Class",
+            "Community Based Research", 
+            "Discipline-Based", 
+            "Problem-Based", 
+            "Pure Service", 
+            "Service Internship"};
+
 
         
 
@@ -343,13 +356,38 @@ namespace SLApp_Beta
 
         #endregion
 
+        // Event which runs as columns in the main grid are auto-generated
 		private void StudentLearningExperiences_DataGrid_OnAutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
 		{
-			if (e.PropertyName == "ID") e.Cancel = true;
+            // don't show the ID column
+            if (e.PropertyName == "ID") {
+                e.Cancel = true;
+            // Use ComboBox instead of text for Semester
+            } else if (e.PropertyName == "Semester") {
+                DataGridComboBoxColumn Combo = new DataGridComboBoxColumn();
+                Combo.TextBinding = new Binding(e.PropertyName);
+                Combo.ItemsSource = semesters;
+                Combo.Header = "Semester";
+                e.Column = Combo;
+            // Use ComboBox instead of text for Type of Learning
+            } else if (e.PropertyName == "TypeofLearning") {
+                DataGridComboBoxColumn Combo = new DataGridComboBoxColumn();
+                Combo.TextBinding = new Binding(e.PropertyName);
+                Combo.ItemsSource = servicelearningtype;
+                Combo.Header = "Type of Learning";
+                e.Column = Combo;
+            }
 #if Demo
 			if (e.PropertyName == "Student_ID") e.Cancel = true;
 #endif
 		}
+
+        // When the user edits a row, make sure that the student ID column is auto-populated with the current student id
+        private void studentLearningExperiences_DataGrid_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
+        {
+            Learning_Experience x = e.Row.Item as Learning_Experience;
+            x.Student_ID = student.Student_ID;
+        }
 
         #region Notes
 
