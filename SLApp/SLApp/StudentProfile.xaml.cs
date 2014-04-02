@@ -179,16 +179,25 @@ namespace SLApp_Beta
                 {
                     using (PubsDataContext db = new PubsDataContext())
                     {
-                        Student stud = (from s in db.Students
-                                        where s.Student_ID == student.Student_ID
-                                        select s).Single();
-                        var completionList = new List<Learning_Experience>(from s in db.Learning_Experiences
-                                                                           where s.Student_ID == student.Student_ID
-                                                                           select s);
-                        db.Students.DeleteOnSubmit(stud);
-                        db.Learning_Experiences.DeleteAllOnSubmit(completionList);
-                        db.SubmitChanges();
-                        this.Close();
+						if (studentID_TB.Text.Length > 0 && graduationYear_TB.Text.Length > 0)
+						{
+							Student stud = (from s in db.Students
+											where s.Student_ID == student.Student_ID
+											select s).Single();
+							var completionList = new List<Learning_Experience>(from s in db.Learning_Experiences
+																			   where s.Student_ID == student.Student_ID
+																			   select s);
+							db.Students.DeleteOnSubmit(stud);
+							db.Learning_Experiences.DeleteAllOnSubmit(completionList);
+							db.SubmitChanges();
+							this.Close();
+						}
+						else
+						{
+							MessageBox.Show(
+								"SLApp apologizes for the inconvenience, but you cannot delete an empty profile.",
+								"Delete Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+						}
                     }
                 }
             }
