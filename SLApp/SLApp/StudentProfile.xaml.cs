@@ -32,8 +32,65 @@ namespace SLApp_Beta
             "Pure Service", 
             "Service Internship"};
 
+        /*Added to address SLApp bug fix B, upon which SlApp occasionally crashes when 
+         * the user creates a student profile which contains no service learning experiences */
+        private bool overwriteCheck(Student stud)
+        {
+            // Prompt the user with a yes/no message box.
+            string message =
+                "Are you sure you want to change identification information for the following student?\n\nName: "
+                + stud.FirstName + " " + stud.LastName + "\nID: " + stud.Student_ID + "\nGrad Year: " 
+                + stud.GraduationYear + "\nEmail: " + stud.Email;
+            const string caption = "Confirm overwrite?";
+            System.Windows.Forms.DialogResult result = System.Windows.Forms.MessageBox.Show(message, caption,
+                                         System.Windows.Forms.MessageBoxButtons.YesNo,
+                                         System.Windows.Forms.MessageBoxIcon.Question);
 
-        
+            switch (result)
+            {
+                case System.Windows.Forms.DialogResult.Yes: return true;
+                default:  return false;
+            }
+        }
+
+        /*Added to increase the robustness of SLApp profile creation, such that it will not crash 
+         * upon invalid user input in the Student ID box. */
+        private bool student_ID_IntCheck(string input)
+        {
+            int id;
+            bool check = Int32.TryParse(input, out id); //if input can be cast as an int32, return true 
+
+            //If the input wasn't an integer, give an error message
+            if (!check){
+                string message =
+                "Student ID must contain only integers (cannot contain letters).\nInformation not saved.";
+                const string caption = "Invalid Student ID";
+               System.Windows.Forms.MessageBox.Show(message, caption,
+                                             System.Windows.Forms.MessageBoxButtons.OK,
+                                             System.Windows.Forms.MessageBoxIcon.Error);
+            }
+            return check;
+        }
+
+        /*Added to increase the robustness of SLApp profile creation, such that it will 
+         * not crash upon invalid user input in the graduation year box. */
+        private bool studentGradYearIntCheck(string input)
+        {
+            int id;
+            bool check = Int32.TryParse(input, out id); //if input can be cast as an int32, return true 
+
+            //If the input wasn't an integer, give an error message
+            if (!check)
+            {
+                string message =
+                "Student graduation year must contain only integers (cannot contain letters).\nInformation not saved.";
+                const string caption = "Invalid Student Graduation Year";
+                System.Windows.Forms.MessageBox.Show(message, caption,
+                                              System.Windows.Forms.MessageBoxButtons.OK,
+                                              System.Windows.Forms.MessageBoxIcon.Error);
+            }
+            return check;
+        }
 
         private void expanderCollapsedMinimizeWindow(object sender, RoutedEventArgs e)
         {
@@ -116,10 +173,20 @@ namespace SLApp_Beta
 				{
 					if(studentID_TB.Text.Length > 0 && graduationYear_TB.Text.Length > 0)
 					{
+                        // if there's a problem with the student ID, exit function
+                        if (!student_ID_IntCheck(studentID_TB.Text)) 
+                        {
+                            return;
+                        }
+                        // if there's a problem with the student's grad year year, exit function
+                        if (!studentGradYearIntCheck(graduationYear_TB.Text))
+                        {
+                            return;
+                        }
 						var CheckExists = (from s in db.Students
 						                   where s.Student_ID == Convert.ToInt32(studentID_TB.Text)
 						                   select s);
-						//if the user does not exists, application will create a new user
+						//if the user does not exist, application will create a new user
 						if (CheckExists.Count() == 0)
 						{
 
@@ -138,23 +205,50 @@ namespace SLApp_Beta
 							db.SubmitChanges();
 							LoadStudentLearningExperiences();
 						}
-						else
+						else //if the student ID is found in the database
 						{
-							//save student info
-							Student stud = (from s in db.Students
-							                where s.Student_ID == student.Student_ID
-							                select s).Single();
-							stud.Student_ID = Convert.ToInt32(studentID_TB.Text);
-							stud.FirstName = studentFirstName_TB.Text;
-							stud.LastName = studentLastName_TB.Text;
-							stud.GraduationYear = Convert.ToInt32(graduationYear_TB.Text);
-							stud.Email = studentemail_TB.Text;
+							//save student info after checking that the user did not accidentally change information
+                            Student stud = (from s in db.Students
+                                            where s.Student_ID == Convert.ToInt32(studentID_TB.Text)
+                                            select s).Single();
 
-							//saves experience by calling the save experiences button event
+                            //Create a shallow copy to see if indentification info changes
+                            Student studCopy = new Student();
+                            studCopy.Student_ID = stud.Student_ID;
+                            studCopy.FirstName = stud.FirstName;
+                            studCopy.LastName = stud.LastName;
+                            studCopy.GraduationYear = stud.GraduationYear;
+                            studCopy.Email = stud.Email;
 
-							learningExperienceSave();
+                            //Update student information using input fields
+                            stud.Student_ID = Convert.ToInt32(studentID_TB.Text);
+                            stud.FirstName = studentFirstName_TB.Text;
+                            stud.LastName = studentLastName_TB.Text;
+                            stud.GraduationYear = Convert.ToInt32(graduationYear_TB.Text);
+                            stud.Email = studentemail_TB.Text;
 
-							db.SubmitChanges();
+                            //If the user has changed the basic information in the student profile, make sure
+                            // that was intentional before updating.
+                            if (!(studCopy.Student_ID == stud.Student_ID &&
+                                studCopy.FirstName == stud.FirstName &&
+                                studCopy.LastName == stud.LastName &&
+                                studCopy.GraduationYear == stud.GraduationYear &&
+                                studCopy.Email == stud.Email))
+                            {
+                                bool check = overwriteCheck(studCopy);
+                                if (!check){  //If it was a mistake, don't save changes
+                                    return; 
+                                }
+                            }
+                            student = stud; // fills in this window's student information
+
+                            //saves experience by calling the save experiences button event
+                            learningExperienceSave();
+                            db.SubmitChanges();
+                            LoadStudentLearningExperiences(); // reloads student information into the window
+
+
+                        
 						}
 
 					}
