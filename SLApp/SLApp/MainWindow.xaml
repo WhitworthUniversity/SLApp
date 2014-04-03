@@ -132,7 +132,7 @@
                         <Button Content="Save" Height="23" Name="saveNewUser_BTN" Width="75" Click="saveUser_BTN_Click" HorizontalAlignment="Right" Margin="0,0,16,186" VerticalAlignment="Bottom" />
                         <Button Content="Delete" Height="23" HorizontalAlignment="Left" Margin="6,0,0,186" Name="deleteUser_BTN" VerticalAlignment="Bottom" Width="75" Click="deleteUser_BTN_Click" />
                         <DataGrid AutoGenerateColumns="True" Margin="6,6,15,215" Name="users_DataGrid" 
-                                  CanUserAddRows="True" ItemsSource="{Binding}" Width="370" />
+                                  CanUserAddRows="True" ItemsSource="{Binding}" Width="370" CellEditEnding="users_DataGrid_CellEditEnding" />
 					</Grid>
 					<Button Content="Run Query" Height="23" HorizontalAlignment="Right" Margin="0,0,6,6" Name="runQuery_BTN" VerticalAlignment="Bottom" Width="75" Click="RunQuery_BTN_OnClick" IsDefault="True" />
 					<Grid HorizontalAlignment="Right" Name="grid1" Width="326" Margin="0,0,0,35">

@@ -10,6 +10,7 @@ namespace SLApp_Beta
         {
                 private bool isAdmin;
                 DatabaseMethods dbMethods = new DatabaseMethods();
+                PasswordMethods pwMethods = new PasswordMethods();
                 private int loginAttempts = 0;
 
                 public LoginWindow()
@@ -24,13 +25,14 @@ namespace SLApp_Beta
                         {
                                 using(PubsDataContext db = new PubsDataContext())
                                 {
-                                        var users = (from u in db.Application_Users
-                                                where u.Username == username_TB.Text
-                                                select u).Distinct();
+                                    var user = (from u in db.Application_Users
+                                                 where u.Username == username_TB.Text
+                                                 select u).Distinct().First();
+
                                                                                 
-                                        if (verifyPassword(users.password, password_TB.Password))
+                                        if (pwMethods.verifyPassword(user.Password, password_TB.Password))
                                         {
-                                                isAdmin = users.First().IsAdmin;
+                                                isAdmin = user.IsAdmin;
                                                 MainWindow main = new MainWindow(isAdmin);
                                                 main.Show();
                                                 Close();

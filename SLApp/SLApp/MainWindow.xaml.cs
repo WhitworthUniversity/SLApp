@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Collections.Generic;
+using System.Data;
 
 namespace SLApp_Beta
 {
@@ -29,6 +30,7 @@ namespace SLApp_Beta
 		#endregion
 
 		DatabaseMethods  dbMethods = new DatabaseMethods();
+        PasswordMethods pwMethods = new PasswordMethods();
 		
 
 		public MainWindow(bool isAdmin)
@@ -442,6 +444,15 @@ namespace SLApp_Beta
             }
         }
 
+        private void users_DataGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            if ((string)e.Column.Header == "Password")
+            {
+                TextBox box = ((TextBox)e.EditingElement);
+                box.Text = pwMethods.saltAndHashPassword(box.Text);
+            }
+        }
+
 		#region QUERIES
 
 		private void RunQuery_BTN_OnClick(object sender, RoutedEventArgs e)
@@ -616,6 +627,7 @@ namespace SLApp_Beta
 
 
 		#endregion
+
 
 
 
