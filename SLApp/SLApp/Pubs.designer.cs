@@ -711,6 +711,7 @@ namespace SLApp_Beta
     partial void OnSemesterChanged();
     partial void OnYearChanging(System.Nullable<int> value);
     partial void OnYearChanged();
+    partial void OnCourseNumberAChanged();
     partial void OnTotalHoursChanging(System.Nullable<int> value);
     partial void OnTotalHoursChanged();
     partial void OnTypeofLearningChanging(string value);

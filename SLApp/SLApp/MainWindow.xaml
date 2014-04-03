@@ -25,6 +25,10 @@
 		<TabControl HorizontalAlignment="Stretch" Name="tabControl1" VerticalAlignment="Stretch" DataContext="{Binding}" TabStripPlacement="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1" Margin="-1,5,1,-5" Grid.ColumnSpan="2">
 			<TabItem Header="Student" Name="student_tab" IsTabStop="False">
 				<Grid x:Name="grdStudentTab">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="81*"/>
+                        <ColumnDefinition Width="412*"/>
+                    </Grid.ColumnDefinitions>
 					<TextBox Height="28" HorizontalAlignment="Left" Margin="132,10,0,0" Name="studentID_TB" VerticalAlignment="Top" Width="120"
 							 DataContext="{Binding}" MaxLength="7" TabIndex="0" VerticalContentAlignment="Center">
 					</TextBox>
@@ -151,6 +155,7 @@
 						<DataGrid AutoGenerateColumns="True" Margin="6,219,165,52" Name="coursesByType_Datagrid" ItemsSource="{Binding}" />
 						<DataGrid AutoGenerateColumns="True" Margin="164,219,6,52" Name="dataGrid2" ItemsSource="{Binding}" />
 						<TextBox Height="23" HorizontalAlignment="Right" Margin="0,0,5,6" Name="queryYear_TB" VerticalAlignment="Bottom" Width="120" />
+                        <TextBox Height="23" HorizontalAlignment="Right" Margin="0,0,150,6" Name="queryPrefix_TB" VerticalAlignment="Bottom" Width="120" />
 						<ComboBox Height="23" HorizontalAlignment="Left" Margin="6,0,0,6" Name="querySemester_ComboBox" VerticalAlignment="Bottom" Width="120" IsEditable="True">
 							<ComboBoxItem Content="Fall" />
 							<ComboBoxItem Content="Jan" />
@@ -158,6 +163,7 @@
 						</ComboBox>
 						<Label Content="Semester" Height="28" HorizontalAlignment="Left" Margin="6,0,0,26" Name="label9" VerticalAlignment="Bottom" />
 						<Label Content="Year" Height="28" HorizontalAlignment="Right" Margin="0,0,92,26" Name="label10" VerticalAlignment="Bottom" />
+                        <Label Content="Course Prefix" Height="28" HorizontalAlignment="Center" Margin="50,0,92,26" Name="label11" VerticalAlignment="Bottom" />
 					</Grid>
 				</Grid>
 			</TabItem>
