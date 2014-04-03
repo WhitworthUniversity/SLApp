@@ -619,7 +619,7 @@ namespace SLApp_Beta
                                          (querySemester_ComboBox.Text.Length == 0 || e.Semester == querySemester_ComboBox.Text) &&
                                          (queryPrefix_TB.Text.Length == 0 || e.CourseNumber.ToString() == queryPrefix_TB.Text)
 								   group e by e.TypeofLearning into grp
-								   select new {Type = grp.Key, Count = grp.Select(x => x.Student_ID).Distinct().Count()} );
+								   select new {Type = grp.Key, Students = grp.Select(x => x.Student_ID).Distinct().Count(), Classes = grp.Select(x => x.CourseNumber).Distinct().Count()} );
 					coursesByType_Datagrid.DataContext = courses;
 				}
 			}
