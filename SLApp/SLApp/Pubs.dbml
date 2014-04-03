@@ -34,7 +34,7 @@
       <Column Name="Student_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="CourseName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="CourseNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Section" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Section" Type="System.String" DbType="varchar(50)" CanBeNull="true" />
       <Column Name="Professor" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Semester" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Year" Type="System.Int32" DbType="Int" CanBeNull="true" />
