@@ -391,6 +391,7 @@ namespace SLApp_Beta
                             completion.LastName = userROW.LastName;
                             completion.IsAdmin = userROW.IsAdmin;
                             completion.FirstName = userROW.FirstName;
+                            completion.BirthDate = userROW.BirthDate; // Fixes the issue with saving birthdates
 
                             db.SubmitChanges();
                             LoadUsers(users_DataGrid);
@@ -404,6 +405,7 @@ namespace SLApp_Beta
                             exp.LastName = userROW.LastName;
                             exp.IsAdmin = userROW.IsAdmin;
                             exp.FirstName = userROW.FirstName;
+                            exp.BirthDate = userROW.BirthDate; // Fixes the issue with saving birthdates
 
                             db.Application_Users.InsertOnSubmit(exp);
                             db.SubmitChanges();
@@ -596,6 +598,7 @@ namespace SLApp_Beta
 					var grps = from s in db.Students
 					            from e in db.Learning_Experiences
 					            where s.Student_ID == e.Student_ID &&
+					            s.TotalHours > 0 &&
 					                  (queryYear_TB.Text.Length == 0 || e.Year.ToString() == queryYear_TB.Text) &&
                                       (querySemester_ComboBox.Text.Length == 0 || e.Semester == querySemester_ComboBox.Text)&&
                                       (queryPrefix_TB.Text.Length == 0 || e.CourseNumber.ToString() == queryPrefix_TB.Text)
