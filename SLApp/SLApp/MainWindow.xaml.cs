@@ -478,8 +478,9 @@ namespace SLApp_Beta
 					var totalstudents = new List<Student>(from s in db.Students
 														  from e in db.Learning_Experiences
 														  where e.Student_ID == s.Student_ID &&
-														  (queryYear_TB.Text.Length == 0 || e.Year.ToString() == queryYear_TB.Text) &&
-														  (querySemester_ComboBox.Text.Length == 0 || e.Semester == querySemester_ComboBox.Text)
+                                                          (queryYear_TB.Text.Length == 0 || e.Year.ToString() == queryYear_TB.Text) &&
+                                                          (querySemester_ComboBox.Text.Length == 0 || e.Semester == querySemester_ComboBox.Text) && 
+                                                          (queryPrefix_TB.Text.Length == 0 || e.CourseNumber.ToString() == queryPrefix_TB.Text)
 					                                  select s);
 					totalStudents_TB.Text = totalstudents.Count().ToString();
 				}
@@ -496,7 +497,8 @@ namespace SLApp_Beta
 														  from e in db.Learning_Experiences
 														  where e.Student_ID == s.Student_ID &&
 														  (queryYear_TB.Text.Length == 0 || e.Year.ToString() == queryYear_TB.Text) &&
-														  (querySemester_ComboBox.Text.Length == 0 || e.Semester == querySemester_ComboBox.Text)
+                                                          (querySemester_ComboBox.Text.Length == 0 || e.Semester == querySemester_ComboBox.Text) &&
+                                                          (queryPrefix_TB.Text.Length == 0 || e.CourseNumber.ToString() == queryPrefix_TB.Text)
 														  select s).Distinct();
 					unduplicatedStudents_TB.Text = totalstudents.Count().ToString();
 				}
@@ -513,7 +515,8 @@ namespace SLApp_Beta
 																   from s in db.Students
 																   where s.Student_ID == e.Student_ID &&
 																   (queryYear_TB.Text.Length == 0 || e.Year.ToString() == queryYear_TB.Text) &&
-																   (querySemester_ComboBox.Text.Length == 0 || e.Semester == querySemester_ComboBox.Text)
+                                                                   (querySemester_ComboBox.Text.Length == 0 || e.Semester == querySemester_ComboBox.Text) &&
+                                                                   (queryPrefix_TB.Text.Length == 0 || e.CourseNumber.ToString() == queryPrefix_TB.Text)
 																   select e);
 
 					totalHours_TB.Text = totalhours.Sum(i => i.TotalHours.GetValueOrDefault(0)).ToString();
@@ -531,7 +534,8 @@ namespace SLApp_Beta
 																   from s in db.Students
 																   where s.Student_ID == e.Student_ID &&
 																   (queryYear_TB.Text.Length == 0 || e.Year.ToString() == queryYear_TB.Text) &&
-																   (querySemester_ComboBox.Text.Length == 0 || e.Semester == querySemester_ComboBox.Text)
+                                                                   (querySemester_ComboBox.Text.Length == 0 || e.Semester == querySemester_ComboBox.Text) &&
+                                                                   (queryPrefix_TB.Text.Length == 0 || e.CourseNumber.ToString() == queryPrefix_TB.Text)
 																   select e).GroupBy(s => s.Student_ID).Select(e => e.MaxBy(x => x.TotalHours));
 
 						unduplicatedHours_TB.Text = totalhours.Sum(i => i.TotalHours.GetValueOrDefault(0)).ToString();
@@ -548,13 +552,15 @@ namespace SLApp_Beta
 					var totalhours = new List<Learning_Experience>(from e in db.Learning_Experiences
 																   where
 																   (queryYear_TB.Text.Length == 0 || e.Year.ToString() == queryYear_TB.Text) &&
-																   (querySemester_ComboBox.Text.Length == 0 || e.Semester == querySemester_ComboBox.Text)
+                                                                   (querySemester_ComboBox.Text.Length == 0 || e.Semester == querySemester_ComboBox.Text) &&
+                                                                   (queryPrefix_TB.Text.Length == 0 || e.CourseNumber.ToString() == queryPrefix_TB.Text)
 																   select e);
 					var totalstudents = new List<Student>(from s in db.Students
 														  from e in db.Learning_Experiences
 														  where e.Student_ID == s.Student_ID &&
 														  (queryYear_TB.Text.Length == 0 || e.Year.ToString() == queryYear_TB.Text) &&
-														  (querySemester_ComboBox.Text.Length == 0 || e.Semester == querySemester_ComboBox.Text)
+                                                          (querySemester_ComboBox.Text.Length == 0 || e.Semester == querySemester_ComboBox.Text) &&
+                                                          (queryPrefix_TB.Text.Length == 0 || e.CourseNumber.ToString() == queryPrefix_TB.Text)
 														  select s);
 					double avg_hours;
 					avg_hours = (Convert.ToDouble(totalhours.Sum(i => i.TotalHours.GetValueOrDefault(0))) / Convert.ToDouble(totalstudents.Count()));
@@ -572,7 +578,8 @@ namespace SLApp_Beta
 					var allcourses = new List<Learning_Experience>(from e in db.Learning_Experiences
 																   where
 														  (queryYear_TB.Text.Length == 0 || e.Year.ToString() == queryYear_TB.Text) &&
-														  (querySemester_ComboBox.Text.Length == 0 || e.Semester == querySemester_ComboBox.Text)
+                                                          (querySemester_ComboBox.Text.Length == 0 || e.Semester == querySemester_ComboBox.Text) &&
+                                                          (queryPrefix_TB.Text.Length == 0 || e.CourseNumber.ToString() == queryPrefix_TB.Text)
 															   select e).GroupBy(x => String.Format("{0}-{1}", x.CourseNumber, x.Section)).Distinct();
 
 					courseCount_TB.Text = allcourses.Count().ToString();
@@ -590,7 +597,8 @@ namespace SLApp_Beta
 					            from e in db.Learning_Experiences
 					            where s.Student_ID == e.Student_ID &&
 					                  (queryYear_TB.Text.Length == 0 || e.Year.ToString() == queryYear_TB.Text) &&
-					                  (querySemester_ComboBox.Text.Length == 0 || e.Semester == querySemester_ComboBox.Text)
+                                      (querySemester_ComboBox.Text.Length == 0 || e.Semester == querySemester_ComboBox.Text)&&
+                                      (queryPrefix_TB.Text.Length == 0 || e.CourseNumber.ToString() == queryPrefix_TB.Text)
 					            group e by new {e.CourseNumber, e.Section} into grp select new { Class = grp.Key.CourseNumber, Section = grp.Key.Section, Count = grp.Select(x => x.Student_ID).Distinct().Count() };
 					dataGrid2.DataContext = grps;
 				}
@@ -605,14 +613,14 @@ namespace SLApp_Beta
 				{
 					var courses = (from e in db.Learning_Experiences
 								   where (queryYear_TB.Text.Length == 0 || e.Year.ToString() == queryYear_TB.Text) &&
-														  (querySemester_ComboBox.Text.Length == 0 || e.Semester == querySemester_ComboBox.Text)
+                                                          (querySemester_ComboBox.Text.Length == 0 || e.Semester == querySemester_ComboBox.Text) &&
+                                                          (queryPrefix_TB.Text.Length == 0 || e.CourseNumber.ToString() == queryPrefix_TB.Text)
 								   group e by e.TypeofLearning into grp
 								   select new {Type = grp.Key, Count = grp.Select(x => x.Student_ID).Distinct().Count()} );
 					coursesByType_Datagrid.DataContext = courses;
 				}
 			}
 		}
-
 
 		#endregion
 
