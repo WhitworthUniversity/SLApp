@@ -25,9 +25,10 @@ namespace SLApp_Beta
                                 using(PubsDataContext db = new PubsDataContext())
                                 {
                                         var users = (from u in db.Application_Users
-                                                where u.Username == username_TB.Text && u.Password == password_TB.Password
+                                                where u.Username == username_TB.Text
                                                 select u).Distinct();
-                                        if (users.Count() > 0)
+                                                                                
+                                        if (verifyPassword(users.password, password_TB.Password))
                                         {
                                                 isAdmin = users.First().IsAdmin;
                                                 MainWindow main = new MainWindow(isAdmin);
