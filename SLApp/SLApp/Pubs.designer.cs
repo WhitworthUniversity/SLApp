@@ -22,7 +22,7 @@ namespace SLApp_Beta
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="SLDatabase")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="SLTestDB")]
 	public partial class PubsDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -39,15 +39,18 @@ namespace SLApp_Beta
     partial void InsertCommunity_Partnership_Agreement(Community_Partnership_Agreement instance);
     partial void UpdateCommunity_Partnership_Agreement(Community_Partnership_Agreement instance);
     partial void DeleteCommunity_Partnership_Agreement(Community_Partnership_Agreement instance);
-    partial void InsertLearning_Experience(Learning_Experience instance);
-    partial void UpdateLearning_Experience(Learning_Experience instance);
-    partial void DeleteLearning_Experience(Learning_Experience instance);
     partial void InsertStudent(Student instance);
     partial void UpdateStudent(Student instance);
     partial void DeleteStudent(Student instance);
     partial void InsertAgency(Agency instance);
     partial void UpdateAgency(Agency instance);
     partial void DeleteAgency(Agency instance);
+    partial void InsertService_Learning_Type(Service_Learning_Type instance);
+    partial void UpdateService_Learning_Type(Service_Learning_Type instance);
+    partial void DeleteService_Learning_Type(Service_Learning_Type instance);
+    partial void InsertLearning_Experience(Learning_Experience instance);
+    partial void UpdateLearning_Experience(Learning_Experience instance);
+    partial void DeleteLearning_Experience(Learning_Experience instance);
     #endregion
 		
 		public PubsDataContext() : 
@@ -104,14 +107,6 @@ namespace SLApp_Beta
 			}
 		}
 		
-		public System.Data.Linq.Table<Learning_Experience> Learning_Experiences
-		{
-			get
-			{
-				return this.GetTable<Learning_Experience>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Student> Students
 		{
 			get
@@ -133,6 +128,22 @@ namespace SLApp_Beta
 			get
 			{
 				return this.GetTable<Agency>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Service_Learning_Type> Service_Learning_Types
+		{
+			get
+			{
+				return this.GetTable<Service_Learning_Type>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Learning_Experience> Learning_Experiences
+		{
+			get
+			{
+				return this.GetTable<Learning_Experience>();
 			}
 		}
 	}
@@ -634,381 +645,6 @@ namespace SLApp_Beta
 					this._AgencyName = value;
 					this.SendPropertyChanged("AgencyName");
 					this.OnAgencyNameChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Learning_Experience")]
-	public partial class Learning_Experience : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Student_ID;
-		
-		private string _CourseName;
-		
-		private string _CourseNumber;
-		
-		private string _Section;
-		
-		private string _Professor;
-		
-		private string _Semester;
-		
-		private System.Nullable<int> _Year;
-		
-		private System.Nullable<int> _TotalHours;
-		
-		private string _TypeofLearning;
-		
-		private bool _ConfirmedHours;
-		
-		private bool _LiabilityWaiver;
-		
-		private bool _ProjectAgreement;
-		
-		private bool _TimeLog;
-		
-		private int _ID;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnStudent_IDChanging(int value);
-    partial void OnStudent_IDChanged();
-    partial void OnCourseNameChanging(string value);
-    partial void OnCourseNameChanged();
-    partial void OnCourseNumberChanging(string value);
-    partial void OnCourseNumberChanged();
-    partial void OnSectionChanging(string value);
-    partial void OnSectionChanged();
-    partial void OnProfessorChanging(string value);
-    partial void OnProfessorChanged();
-    partial void OnSemesterChanging(string value);
-    partial void OnSemesterChanged();
-    partial void OnYearChanging(System.Nullable<int> value);
-    partial void OnYearChanged();
-    partial void OnCourseNumberAChanged();
-    partial void OnTotalHoursChanging(System.Nullable<int> value);
-    partial void OnTotalHoursChanged();
-    partial void OnTypeofLearningChanging(string value);
-    partial void OnTypeofLearningChanged();
-    partial void OnConfirmedHoursChanging(bool value);
-    partial void OnConfirmedHoursChanged();
-    partial void OnLiabilityWaiverChanging(bool value);
-    partial void OnLiabilityWaiverChanged();
-    partial void OnProjectAgreementChanging(bool value);
-    partial void OnProjectAgreementChanged();
-    partial void OnTimeLogChanging(bool value);
-    partial void OnTimeLogChanged();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    #endregion
-		
-		public Learning_Experience()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Student_ID", DbType="Int NOT NULL")]
-		public int Student_ID
-		{
-			get
-			{
-				return this._Student_ID;
-			}
-			set
-			{
-				if ((this._Student_ID != value))
-				{
-					this.OnStudent_IDChanging(value);
-					this.SendPropertyChanging();
-					this._Student_ID = value;
-					this.SendPropertyChanged("Student_ID");
-					this.OnStudent_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CourseName", DbType="VarChar(50)")]
-		public string CourseName
-		{
-			get
-			{
-				return this._CourseName;
-			}
-			set
-			{
-				if ((this._CourseName != value))
-				{
-					this.OnCourseNameChanging(value);
-					this.SendPropertyChanging();
-					this._CourseName = value;
-					this.SendPropertyChanged("CourseName");
-					this.OnCourseNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CourseNumber", DbType="VarChar(50)")]
-		public string CourseNumber
-		{
-			get
-			{
-				return this._CourseNumber;
-			}
-			set
-			{
-				if ((this._CourseNumber != value))
-				{
-					this.OnCourseNumberChanging(value);
-					this.SendPropertyChanging();
-					this._CourseNumber = value;
-					this.SendPropertyChanged("CourseNumber");
-					this.OnCourseNumberChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Section", DbType="varchar(50)")]
-		public string Section
-		{
-			get
-			{
-				return this._Section;
-			}
-			set
-			{
-				if ((this._Section != value))
-				{
-					this.OnSectionChanging(value);
-					this.SendPropertyChanging();
-					this._Section = value;
-					this.SendPropertyChanged("Section");
-					this.OnSectionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Professor", DbType="VarChar(50)")]
-		public string Professor
-		{
-			get
-			{
-				return this._Professor;
-			}
-			set
-			{
-				if ((this._Professor != value))
-				{
-					this.OnProfessorChanging(value);
-					this.SendPropertyChanging();
-					this._Professor = value;
-					this.SendPropertyChanged("Professor");
-					this.OnProfessorChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Semester", DbType="VarChar(50)")]
-		public string Semester
-		{
-			get
-			{
-				return this._Semester;
-			}
-			set
-			{
-				if ((this._Semester != value))
-				{
-					this.OnSemesterChanging(value);
-					this.SendPropertyChanging();
-					this._Semester = value;
-					this.SendPropertyChanged("Semester");
-					this.OnSemesterChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Year", DbType="Int")]
-		public System.Nullable<int> Year
-		{
-			get
-			{
-				return this._Year;
-			}
-			set
-			{
-				if ((this._Year != value))
-				{
-					this.OnYearChanging(value);
-					this.SendPropertyChanging();
-					this._Year = value;
-					this.SendPropertyChanged("Year");
-					this.OnYearChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalHours", DbType="Int")]
-		public System.Nullable<int> TotalHours
-		{
-			get
-			{
-				return this._TotalHours;
-			}
-			set
-			{
-				if ((this._TotalHours != value))
-				{
-					this.OnTotalHoursChanging(value);
-					this.SendPropertyChanging();
-					this._TotalHours = value;
-					this.SendPropertyChanged("TotalHours");
-					this.OnTotalHoursChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TypeofLearning", DbType="VarChar(50)")]
-		public string TypeofLearning
-		{
-			get
-			{
-				return this._TypeofLearning;
-			}
-			set
-			{
-				if ((this._TypeofLearning != value))
-				{
-					this.OnTypeofLearningChanging(value);
-					this.SendPropertyChanging();
-					this._TypeofLearning = value;
-					this.SendPropertyChanged("TypeofLearning");
-					this.OnTypeofLearningChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ConfirmedHours", DbType="Bit NOT NULL")]
-		public bool ConfirmedHours
-		{
-			get
-			{
-				return this._ConfirmedHours;
-			}
-			set
-			{
-				if ((this._ConfirmedHours != value))
-				{
-					this.OnConfirmedHoursChanging(value);
-					this.SendPropertyChanging();
-					this._ConfirmedHours = value;
-					this.SendPropertyChanged("ConfirmedHours");
-					this.OnConfirmedHoursChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LiabilityWaiver", DbType="Bit NOT NULL")]
-		public bool LiabilityWaiver
-		{
-			get
-			{
-				return this._LiabilityWaiver;
-			}
-			set
-			{
-				if ((this._LiabilityWaiver != value))
-				{
-					this.OnLiabilityWaiverChanging(value);
-					this.SendPropertyChanging();
-					this._LiabilityWaiver = value;
-					this.SendPropertyChanged("LiabilityWaiver");
-					this.OnLiabilityWaiverChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectAgreement", DbType="Bit NOT NULL")]
-		public bool ProjectAgreement
-		{
-			get
-			{
-				return this._ProjectAgreement;
-			}
-			set
-			{
-				if ((this._ProjectAgreement != value))
-				{
-					this.OnProjectAgreementChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectAgreement = value;
-					this.SendPropertyChanged("ProjectAgreement");
-					this.OnProjectAgreementChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TimeLog", DbType="Bit NOT NULL")]
-		public bool TimeLog
-		{
-			get
-			{
-				return this._TimeLog;
-			}
-			set
-			{
-				if ((this._TimeLog != value))
-				{
-					this.OnTimeLogChanging(value);
-					this.SendPropertyChanging();
-					this._TimeLog = value;
-					this.SendPropertyChanged("TimeLog");
-					this.OnTimeLogChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
 				}
 			}
 		}
@@ -1688,6 +1324,466 @@ namespace SLApp_Beta
 					this._Description = value;
 					this.SendPropertyChanged("Description");
 					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Service_Learning_Types")]
+	public partial class Service_Learning_Type : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _Name;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    #endregion
+		
+		public Service_Learning_Type()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Learning_Experience")]
+	public partial class Learning_Experience : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Student_ID;
+		
+		private string _CourseName;
+		
+		private string _CourseNumber;
+		
+		private string _Section;
+		
+		private string _Professor;
+		
+		private string _Semester;
+		
+		private System.Nullable<int> _Year;
+		
+		private System.Nullable<int> _TotalHours;
+		
+		private bool _ConfirmedHours;
+		
+		private bool _LiabilityWaiver;
+		
+		private bool _ProjectAgreement;
+		
+		private bool _TimeLog;
+		
+		private int _ID;
+		
+		private string _TypeofLearning;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnStudent_IDChanging(int value);
+    partial void OnStudent_IDChanged();
+    partial void OnCourseNameChanging(string value);
+    partial void OnCourseNameChanged();
+    partial void OnCourseNumberChanging(string value);
+    partial void OnCourseNumberChanged();
+    partial void OnSectionChanging(string value);
+    partial void OnSectionChanged();
+    partial void OnProfessorChanging(string value);
+    partial void OnProfessorChanged();
+    partial void OnSemesterChanging(string value);
+    partial void OnSemesterChanged();
+    partial void OnYearChanging(System.Nullable<int> value);
+    partial void OnYearChanged();
+    partial void OnTotalHoursChanging(System.Nullable<int> value);
+    partial void OnTotalHoursChanged();
+    partial void OnConfirmedHoursChanging(bool value);
+    partial void OnConfirmedHoursChanged();
+    partial void OnLiabilityWaiverChanging(bool value);
+    partial void OnLiabilityWaiverChanged();
+    partial void OnProjectAgreementChanging(bool value);
+    partial void OnProjectAgreementChanged();
+    partial void OnTimeLogChanging(bool value);
+    partial void OnTimeLogChanged();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnTypeofLearningChanging(string value);
+    partial void OnTypeofLearningChanged();
+    #endregion
+		
+		public Learning_Experience()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Student_ID", DbType="Int NOT NULL")]
+		public int Student_ID
+		{
+			get
+			{
+				return this._Student_ID;
+			}
+			set
+			{
+				if ((this._Student_ID != value))
+				{
+					this.OnStudent_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Student_ID = value;
+					this.SendPropertyChanged("Student_ID");
+					this.OnStudent_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CourseName", DbType="VarChar(50)")]
+		public string CourseName
+		{
+			get
+			{
+				return this._CourseName;
+			}
+			set
+			{
+				if ((this._CourseName != value))
+				{
+					this.OnCourseNameChanging(value);
+					this.SendPropertyChanging();
+					this._CourseName = value;
+					this.SendPropertyChanged("CourseName");
+					this.OnCourseNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CourseNumber", DbType="VarChar(50)")]
+		public string CourseNumber
+		{
+			get
+			{
+				return this._CourseNumber;
+			}
+			set
+			{
+				if ((this._CourseNumber != value))
+				{
+					this.OnCourseNumberChanging(value);
+					this.SendPropertyChanging();
+					this._CourseNumber = value;
+					this.SendPropertyChanged("CourseNumber");
+					this.OnCourseNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Section", DbType="VarChar(50)")]
+		public string Section
+		{
+			get
+			{
+				return this._Section;
+			}
+			set
+			{
+				if ((this._Section != value))
+				{
+					this.OnSectionChanging(value);
+					this.SendPropertyChanging();
+					this._Section = value;
+					this.SendPropertyChanged("Section");
+					this.OnSectionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Professor", DbType="VarChar(50)")]
+		public string Professor
+		{
+			get
+			{
+				return this._Professor;
+			}
+			set
+			{
+				if ((this._Professor != value))
+				{
+					this.OnProfessorChanging(value);
+					this.SendPropertyChanging();
+					this._Professor = value;
+					this.SendPropertyChanged("Professor");
+					this.OnProfessorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Semester", DbType="VarChar(50)")]
+		public string Semester
+		{
+			get
+			{
+				return this._Semester;
+			}
+			set
+			{
+				if ((this._Semester != value))
+				{
+					this.OnSemesterChanging(value);
+					this.SendPropertyChanging();
+					this._Semester = value;
+					this.SendPropertyChanged("Semester");
+					this.OnSemesterChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Year", DbType="Int")]
+		public System.Nullable<int> Year
+		{
+			get
+			{
+				return this._Year;
+			}
+			set
+			{
+				if ((this._Year != value))
+				{
+					this.OnYearChanging(value);
+					this.SendPropertyChanging();
+					this._Year = value;
+					this.SendPropertyChanged("Year");
+					this.OnYearChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalHours", DbType="Int")]
+		public System.Nullable<int> TotalHours
+		{
+			get
+			{
+				return this._TotalHours;
+			}
+			set
+			{
+				if ((this._TotalHours != value))
+				{
+					this.OnTotalHoursChanging(value);
+					this.SendPropertyChanging();
+					this._TotalHours = value;
+					this.SendPropertyChanged("TotalHours");
+					this.OnTotalHoursChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ConfirmedHours", DbType="Bit NOT NULL")]
+		public bool ConfirmedHours
+		{
+			get
+			{
+				return this._ConfirmedHours;
+			}
+			set
+			{
+				if ((this._ConfirmedHours != value))
+				{
+					this.OnConfirmedHoursChanging(value);
+					this.SendPropertyChanging();
+					this._ConfirmedHours = value;
+					this.SendPropertyChanged("ConfirmedHours");
+					this.OnConfirmedHoursChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LiabilityWaiver", DbType="Bit NOT NULL")]
+		public bool LiabilityWaiver
+		{
+			get
+			{
+				return this._LiabilityWaiver;
+			}
+			set
+			{
+				if ((this._LiabilityWaiver != value))
+				{
+					this.OnLiabilityWaiverChanging(value);
+					this.SendPropertyChanging();
+					this._LiabilityWaiver = value;
+					this.SendPropertyChanged("LiabilityWaiver");
+					this.OnLiabilityWaiverChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectAgreement", DbType="Bit NOT NULL")]
+		public bool ProjectAgreement
+		{
+			get
+			{
+				return this._ProjectAgreement;
+			}
+			set
+			{
+				if ((this._ProjectAgreement != value))
+				{
+					this.OnProjectAgreementChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectAgreement = value;
+					this.SendPropertyChanged("ProjectAgreement");
+					this.OnProjectAgreementChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TimeLog", DbType="Bit NOT NULL")]
+		public bool TimeLog
+		{
+			get
+			{
+				return this._TimeLog;
+			}
+			set
+			{
+				if ((this._TimeLog != value))
+				{
+					this.OnTimeLogChanging(value);
+					this.SendPropertyChanging();
+					this._TimeLog = value;
+					this.SendPropertyChanged("TimeLog");
+					this.OnTimeLogChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TypeofLearning", DbType="VarChar(50)")]
+		public string TypeofLearning
+		{
+			get
+			{
+				return this._TypeofLearning;
+			}
+			set
+			{
+				if ((this._TypeofLearning != value))
+				{
+					this.OnTypeofLearningChanging(value);
+					this.SendPropertyChanging();
+					this._TypeofLearning = value;
+					this.SendPropertyChanged("TypeofLearning");
+					this.OnTypeofLearningChanged();
 				}
 			}
 		}
