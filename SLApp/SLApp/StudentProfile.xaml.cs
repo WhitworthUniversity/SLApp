@@ -24,13 +24,7 @@ namespace SLApp_Beta
         // ComboBox choice listings for autocolumn generation, see
         // StudentLearningExperiences_DataGrid_OnAutoGeneratingColumn
         private string[] semesters = new string[] {"Fall", "Jan", "Spring"};
-        private string[] servicelearningtype = new string[]
-            {"Capstone Class",
-            "Community Based Research", 
-            "Discipline-Based", 
-            "Problem-Based", 
-            "Pure Service", 
-            "Service Internship"};
+        private string[] servicelearningtype;
 
         /*Added to address SLApp bug fix B, upon which SlApp occasionally crashes when 
          * the user creates a student profile which contains no service learning experiences */
@@ -124,7 +118,11 @@ namespace SLApp_Beta
 		public StudentProfile(Student stud, bool isAdmin, bool IsEdit)
 		{
 			InitializeComponent();
-
+            using (PubsDataContext db = new PubsDataContext())
+            {
+                servicelearningtype = (from type in db.Service_Learning_Types
+                                       select type.Name).AsEnumerable().ToArray();
+            }
 			if (isAdmin == false)studentNotes_DataGrid.IsEnabled = false;
 #if Demo
 			studentID_TB.Visibility = Visibility.Hidden;
@@ -336,18 +334,6 @@ namespace SLApp_Beta
             else if (expROW.Semester != "Fall" && expROW.Semester != "Jan" && expROW.Semester != "Spring" && expROW.Semester != "")
             {
                 MessageBox.Show("Entry in Semester column invalid. Valid entries are blank, 'Fall', 'Jan', or 'Spring'.",
-                                "Datagrid Row Error", MessageBoxButton.OK,
-                                MessageBoxImage.Exclamation);
-                return false;
-            }
-            else if (expROW.TypeofLearning != "Discipline-Based" && expROW.TypeofLearning != "Problem-Based" &&
-                     expROW.TypeofLearning != "Pure Service" && expROW.TypeofLearning != "Service Internship" &&
-                     expROW.TypeofLearning != "Community Based Research" && expROW.TypeofLearning != "Capstone Class"
-                && expROW.TypeofLearning != "")
-            {
-                MessageBox.Show("Entry in Type of Learning column invalid.\n" +
-                    "Valid entries are blank, 'Discipline-Based', 'Problem-Based', 'Pure Service',\n" +
-                "'Service Internship', 'Community Based Research', or 'Capstone Class'",
                                 "Datagrid Row Error", MessageBoxButton.OK,
                                 MessageBoxImage.Exclamation);
                 return false;
