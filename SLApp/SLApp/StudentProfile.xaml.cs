@@ -24,13 +24,7 @@ namespace SLApp_Beta
         // ComboBox choice listings for autocolumn generation, see
         // StudentLearningExperiences_DataGrid_OnAutoGeneratingColumn
         private string[] semesters = new string[] {"Fall", "Jan", "Spring"};
-        private string[] servicelearningtype = new string[]
-            {"Capstone Class",
-            "Community Based Research", 
-            "Discipline-Based", 
-            "Problem-Based", 
-            "Pure Service", 
-            "Service Internship"};
+        private string[] servicelearningtype;
 
         /*Added to address SLApp bug fix B, upon which SlApp occasionally crashes when 
          * the user creates a student profile which contains no service learning experiences */
@@ -124,7 +118,11 @@ namespace SLApp_Beta
 		public StudentProfile(Student stud, bool isAdmin, bool IsEdit)
 		{
 			InitializeComponent();
-
+            using (PubsDataContext db = new PubsDataContext())
+            {
+                servicelearningtype = (from type in db.Service_Learning_Types
+                                       select type.Name).AsEnumerable().ToArray();
+            }
 			if (isAdmin == false)studentNotes_DataGrid.IsEnabled = false;
 #if Demo
 			studentID_TB.Visibility = Visibility.Hidden;
