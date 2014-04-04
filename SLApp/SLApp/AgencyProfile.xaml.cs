@@ -20,28 +20,44 @@ namespace SLApp_Beta
         {
             InitializeComponent();
 
-			if (isAdmin == false)
-			{
-				agencyRating_TB.Visibility = Visibility.Hidden;
-				agencyRating_LBL.Visibility = Visibility.Hidden;
-				save_BTN.Visibility = Visibility.Hidden;
-				agencyDelete_BTN.Visibility = Visibility.Hidden;
-			}
+            //Feature Set 1 Problem B
+            //Only admins can rate, save and delete agencies.
+            if (isAdmin)
+            {
+                agencyRating_TB.Visibility = Visibility.Visible;
+                agencyRating_LBL.Visibility = Visibility.Visible;
+                save_BTN.Visibility = Visibility.Visible;
+                agencyDelete_BTN.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                agencyRating_TB.Visibility = Visibility.Hidden;
+                agencyRating_LBL.Visibility = Visibility.Hidden;
+                save_BTN.Visibility = Visibility.Hidden;
+                agencyDelete_BTN.Visibility = Visibility.Hidden;
+            }
         }
 
         public AgencyProfile(Agency agent, bool isAdmin, bool IsEdit)
         {
             InitializeComponent();
 
-			if (isAdmin == false)
-			{
-				agencyRating_TB.Visibility = Visibility.Hidden;
-				agencyRating_LBL.Visibility = Visibility.Hidden;
-				save_BTN.Visibility = Visibility.Hidden;
-				agencyDelete_BTN.Visibility = Visibility.Hidden;
-			}
-
-			if(isAdmin)
+            //Feature Set 1 Problem B
+            //Only admins can rate, save and delete agencies.
+            if (isAdmin)
+            {
+                agencyRating_TB.Visibility = Visibility.Visible;
+                agencyRating_LBL.Visibility = Visibility.Visible;
+                save_BTN.Visibility = Visibility.Visible;
+                agencyDelete_BTN.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                agencyRating_TB.Visibility = Visibility.Hidden;
+                agencyRating_LBL.Visibility = Visibility.Hidden;
+                save_BTN.Visibility = Visibility.Hidden;
+                agencyDelete_BTN.Visibility = Visibility.Hidden;
+            }
 
 	        this.agent = agent;
 
@@ -100,8 +116,8 @@ namespace SLApp_Beta
 						}
 						else
 						{
-							//save agency info
-							Agency agency = (from s in db.Agencies
+							//save agency info && save as current agent
+							Agency agency = agent = (from s in db.Agencies
 											 where s.Name == agent.Name
 											 select s).Single();
 							agency.Name = agencyName_TB.Text;

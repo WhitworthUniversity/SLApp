@@ -2,16 +2,15 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="SLApp" Height="600" Width="1000" MinHeight="600" MinWidth="700" Icon="/SLApp_Beta;component/slap.jpg" >
-	<Grid Background="#FF990000">
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="236*" />
-			<ColumnDefinition Width="742*" />
-		</Grid.ColumnDefinitions>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="*"/>
-		</Grid.RowDefinitions>
-
+    <Grid Background="#FF990000">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="236*" />
+            <ColumnDefinition Width="742*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 		<Menu Height="23" Name="mainWindowMenu" Grid.ColumnSpan="2">
 			<MenuItem Header="_File" IsTabStop="False">
 				<MenuItem Name="logoffMenuItem" Header="LogOff" Click="logoffMenuItem_Click" />
@@ -42,127 +41,127 @@
 					<DataGrid AutoGenerateColumns="True" Name="studentSearch_DataGrid" Margin="10,208,0,10" ItemsSource="{Binding}"
                               MouseDoubleClick="StudentSearch_DataGrid_OnMouseDoubleClick" IsReadOnly="True" 
                               IsManipulationEnabled="False" VerticalScrollBarVisibility="Visible" TabIndex="11" AutoGeneratingColumn="studentSearch_DataGrid_AutoGeneratingColumn" HorizontalAlignment="Left" Width="966">
-						<DataGrid.ContextMenu>
-							<ContextMenu Name="studentSearch_ContextMenu">
-								<MenuItem Header="Add" Click="Add_MenuItem_Click" />
-								<MenuItem Header="Edit" Click="Edit_MenuItem_Click" />
-								<MenuItem Header="Delete" Click="Delete_MenuItem_Click" />
-							</ContextMenu>
-						</DataGrid.ContextMenu>
-					</DataGrid>
-					<Label Content="Semester" Height="28" HorizontalAlignment="Left" Margin="6,175,0,0" Name="semester_LBL" VerticalAlignment="Top" />
-					<Label Content="Course Number" Height="28" HorizontalAlignment="Left" Margin="339,10,0,0" Name="course_LBL" VerticalAlignment="Top" />
-					<Label Content="Learning Experience Year" Height="28" HorizontalAlignment="Left" Margin="339,142,0,0" Name="year_LBL" VerticalAlignment="Top" />
-					<Label Content="Type of Service" Height="28" HorizontalAlignment="Left" Margin="339,175,0,0" Name="serviceType_LBL" VerticalAlignment="Top" />
-					<TextBox Height="28" HorizontalAlignment="Left" IsEnabled="True" Margin="514,11,0,0" Name="course_TB" VerticalAlignment="Top" Width="120" MaxLength="50" TabIndex="8" VerticalContentAlignment="Center" />
-					<TextBox Height="28" HorizontalAlignment="Left" IsEnabled="True" Margin="514,142,0,0" Name="year_TB" VerticalAlignment="Top" Width="120" TabIndex="6" MaxLength="4" VerticalContentAlignment="Center" />
-					<ComboBox Height="28" HorizontalAlignment="Left" Margin="514,175,0,0" Name="serviceType_CBX" VerticalAlignment="Top" Width="120" DataContext="{Binding}" TabIndex="7" IsEditable="True" VerticalContentAlignment="Center">
-						<ComboBoxItem Content="Capstone Class" />
-						<ComboBoxItem Content="Community Based Research" />
-						<ComboBoxItem Content="Discipline-Based" />
-						<ComboBoxItem Content="Problem-Based" />
-						<ComboBoxItem Content="Pure Service" />
-						<ComboBoxItem Content="Service Internship" />
-					</ComboBox>
-					<Label Content="Professor" Height="28" HorizontalAlignment="Left" Margin="339,109,0,0" Name="professor_LBL" VerticalAlignment="Top" IsEnabled="True" />
-					<TextBox Height="27" HorizontalAlignment="Left" IsEnabled="True" Margin="514,110,0,0" Name="professor_TB" VerticalAlignment="Top" Width="120" MaxLength="50" TabIndex="10" VerticalContentAlignment="Center" />
-					<ComboBox Height="28" HorizontalAlignment="Left" Margin="132,175,0,0" Name="semester_CBX" VerticalAlignment="Top" Width="120" TabIndex="5" IsEditable="True" VerticalContentAlignment="Center" >
-						<ComboBoxItem Content="Fall" />
-						<ComboBoxItem Content="Jan" />
-						<ComboBoxItem Content="Spring" />
-					</ComboBox>
-					<Button Content="Clear All" Height="23" HorizontalAlignment="Right" Margin="0,180,91,0" Name="clear_BTN" TabIndex="10" VerticalAlignment="Top" Width="75" Click="clear_BTN_Click" />
-					<Label Content="Section" Height="28" HorizontalAlignment="Left" IsEnabled="True" Margin="339,76,0,0" Name="Section_LBL" VerticalAlignment="Top" />
-					<TextBox Height="28" HorizontalAlignment="Left" IsEnabled="True" Margin="514,77,0,0" MaxLength="50" Name="Section_TB" TabIndex="11" VerticalAlignment="Top" Width="120" VerticalContentAlignment="Center" />
-					<Label Content="Course Name" Height="28" HorizontalAlignment="Left" IsEnabled="True" Margin="339,43,0,0" Name="CourseName_LBL" VerticalAlignment="Top" />
-					<TextBox Height="28" HorizontalAlignment="Left" IsEnabled="True" Margin="514,44,0,0" MaxLength="50" Name="CourseName_TB" TabIndex="9" VerticalAlignment="Top" Width="120" VerticalContentAlignment="Center" />
-					<!--TODO: adjust the datagrid to change size with the window,
+                        <DataGrid.ContextMenu>
+                            <ContextMenu Name="studentSearch_ContextMenu">
+                                <MenuItem Header="Add" Click="Add_MenuItem_Click" />
+                                <MenuItem Header="Edit" Click="Edit_MenuItem_Click" />
+                                <MenuItem Header="Delete" Click="Delete_MenuItem_Click" />
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                    </DataGrid>
+                    <Label Content="Semester" Height="28" HorizontalAlignment="Left" Margin="6,175,0,0" Name="semester_LBL" VerticalAlignment="Top" />
+                    <Label Content="Course Number" Height="28" HorizontalAlignment="Left" Margin="339,10,0,0" Name="course_LBL" VerticalAlignment="Top" />
+                    <Label Content="Learning Experience Year" Height="28" HorizontalAlignment="Left" Margin="339,142,0,0" Name="year_LBL" VerticalAlignment="Top" />
+                    <Label Content="Type of Service" Height="28" HorizontalAlignment="Left" Margin="339,175,0,0" Name="serviceType_LBL" VerticalAlignment="Top" />
+                    <TextBox Height="28" HorizontalAlignment="Left" IsEnabled="True" Margin="514,11,0,0" Name="course_TB" VerticalAlignment="Top" Width="120" MaxLength="50" TabIndex="8" VerticalContentAlignment="Center" />
+                    <TextBox Height="28" HorizontalAlignment="Left" IsEnabled="True" Margin="514,142,0,0" Name="year_TB" VerticalAlignment="Top" Width="120" TabIndex="6" MaxLength="4" VerticalContentAlignment="Center" />
+                    <ComboBox Height="28" HorizontalAlignment="Left" Margin="514,175,0,0" Name="serviceType_CBX" VerticalAlignment="Top" Width="120" DataContext="{Binding}" TabIndex="7" IsEditable="True" VerticalContentAlignment="Center">
+                        <ComboBoxItem Content="Capstone Class" />
+                        <ComboBoxItem Content="Community Based Research" />
+                        <ComboBoxItem Content="Discipline-Based" />
+                        <ComboBoxItem Content="Problem-Based" />
+                        <ComboBoxItem Content="Pure Service" />
+                        <ComboBoxItem Content="Service Internship" />
+                    </ComboBox>
+                    <Label Content="Professor" Height="28" HorizontalAlignment="Left" Margin="339,109,0,0" Name="professor_LBL" VerticalAlignment="Top" IsEnabled="True" />
+                    <TextBox Height="27" HorizontalAlignment="Left" IsEnabled="True" Margin="514,110,0,0" Name="professor_TB" VerticalAlignment="Top" Width="120" MaxLength="50" TabIndex="10" VerticalContentAlignment="Center" />
+                    <ComboBox Height="28" HorizontalAlignment="Left" Margin="132,175,0,0" Name="semester_CBX" VerticalAlignment="Top" Width="120" TabIndex="5" IsEditable="True" VerticalContentAlignment="Center" >
+                        <ComboBoxItem Content="Fall" />
+                        <ComboBoxItem Content="Jan" />
+                        <ComboBoxItem Content="Spring" />
+                    </ComboBox>
+                    <Button Content="Clear All" Height="23" HorizontalAlignment="Right" Margin="0,180,91,0" Name="clear_BTN" TabIndex="10" VerticalAlignment="Top" Width="75" Click="clear_BTN_Click" />
+                    <Label Content="Section" Height="28" HorizontalAlignment="Left" IsEnabled="True" Margin="339,76,0,0" Name="Section_LBL" VerticalAlignment="Top" />
+                    <TextBox Height="28" HorizontalAlignment="Left" IsEnabled="True" Margin="514,77,0,0" MaxLength="50" Name="Section_TB" TabIndex="11" VerticalAlignment="Top" Width="120" VerticalContentAlignment="Center" />
+                    <Label Content="Course Name" Height="28" HorizontalAlignment="Left" IsEnabled="True" Margin="339,43,0,0" Name="CourseName_LBL" VerticalAlignment="Top" />
+                    <TextBox Height="28" HorizontalAlignment="Left" IsEnabled="True" Margin="514,44,0,0" MaxLength="50" Name="CourseName_TB" TabIndex="9" VerticalAlignment="Top" Width="120" VerticalContentAlignment="Center" />
+                    <!--TODO: adjust the datagrid to change size with the window,
                     THIS MIGHT BE WORKING, needs more testing-->
-				</Grid>
-			</TabItem>
+                </Grid>
+            </TabItem>
 
 
 
-			<TabItem Header="Agency" Name="agency_tab" IsTabStop="False">
-				<Grid Name="grdAgencyTab">
-					<Label Content="Agency Name" Height="28" HorizontalAlignment="Left" Margin="6,6,0,0" Name="agencyName_LBL" VerticalAlignment="Top" />
-					<Label Content="Coordinator Name" Height="28" HorizontalAlignment="Left" Margin="6,69,0,0" Name="agencyCoordinatorName_LBL" VerticalAlignment="Top" />
-					<Label Content="Email" Height="28" HorizontalAlignment="Left" Margin="234,69,0,0" Name="agencyEmail_LBL" VerticalAlignment="Top" />
-					<Label Content="Phone (###-###-####)" Height="28" HorizontalAlignment="Left" Margin="494,69,0,0" Name="agencyPhone_LBL" VerticalAlignment="Top" />
-					<Label Content="Street" Height="28" HorizontalAlignment="Left" Margin="6,132,0,0" Name="agencyAddressStreet_LBL" VerticalAlignment="Top" />
-					<Label Content="City" Height="28" HorizontalAlignment="Left" Margin="222,132,0,0" Name="agencyAddressCity_LBL" VerticalAlignment="Top" />
-					<Label Content="State" Height="28" HorizontalAlignment="Left" Margin="348,132,0,0" Name="agencyAddressState_LBL" VerticalAlignment="Top" />
-					<Label Content="Zipcode" Height="28" HorizontalAlignment="Left" Margin="408,132,0,0" Name="agencyAddressZipcode_LBL" VerticalAlignment="Top" />
-					<Label Content="Website URL" Height="28" HorizontalAlignment="Left" Margin="314,6,0,0" Name="agencyWebsite_LBL" VerticalAlignment="Top" />
-					<Label Content="Rating (1-3)" Height="28" HorizontalAlignment="Left" Margin="236,6,0,0" Name="agencyRating_LBL" VerticalAlignment="Top" />
-					<TextBox Height="23" HorizontalAlignment="Left" Margin="6,40,0,0" Name="agencyName_TB" VerticalAlignment="Top" Width="222" MaxLength="50" TabIndex="0" />
-					<TextBox Height="23" HorizontalAlignment="Left" Margin="236,40,0,0" Name="agencyRating_TB" VerticalAlignment="Top" Width="36" MaxLength="1" TabIndex="1" />
-					<TextBox Height="23" HorizontalAlignment="Left" Margin="314,40,0,0" Name="agencyWebsite_TB" VerticalAlignment="Top" Width="350" MaxLength="50" TabIndex="2" />
-					<TextBox Height="23" HorizontalAlignment="Left" Margin="6,103,0,0" Name="agencyCoordinatorName_TB" VerticalAlignment="Top" Width="220" MaxLength="50" TabIndex="3" />
-					<TextBox Height="23" HorizontalAlignment="Left" Margin="234,103,0,0" Name="agencyEmail_TB" VerticalAlignment="Top" Width="250" MaxLength="50" TabIndex="4" />
-					<TextBox Height="23" HorizontalAlignment="Left" Margin="494,103,0,0" Name="agencyPhone_TB" VerticalAlignment="Top" Width="100" MaxLength="50" TabIndex="5" />
-					<TextBox Height="23" HorizontalAlignment="Left" Margin="6,166,0,0" Name="agencyAddressStreet_TB" VerticalAlignment="Top" Width="210" MaxLength="50" TabIndex="7" />
-					<TextBox Height="23" Margin="222,166,0,0" Name="agencyAddressCity_TB" VerticalAlignment="Top" MaxLength="50" HorizontalAlignment="Left" Width="120" TabIndex="8" />
-					<TextBox Height="23" Margin="348,166,0,0" Name="agencyAddressState_TB" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" MaxLength="50" TabIndex="9" />
-					<TextBox Height="23" HorizontalAlignment="Left" Margin="408,166,0,0" Name="agencyAddressZipcode_TB" VerticalAlignment="Top" Width="75" MaxLength="50" TabIndex="10" />
-					<DataGrid AutoGenerateColumns="True" Margin="0,286,0,0" Name="agencySearch_DataGrid" ItemsSource="{Binding}"
+            <TabItem Header="Agency" Name="agency_tab" IsTabStop="False">
+                <Grid Name="grdAgencyTab">
+                    <Label Content="Agency Name" Height="28" HorizontalAlignment="Left" Margin="6,6,0,0" Name="agencyName_LBL" VerticalAlignment="Top" />
+                    <Label Content="Coordinator Name" Height="28" HorizontalAlignment="Left" Margin="6,69,0,0" Name="agencyCoordinatorName_LBL" VerticalAlignment="Top" />
+                    <Label Content="Email" Height="28" HorizontalAlignment="Left" Margin="234,69,0,0" Name="agencyEmail_LBL" VerticalAlignment="Top" />
+                    <Label Content="Phone (###-###-####)" Height="28" HorizontalAlignment="Left" Margin="494,69,0,0" Name="agencyPhone_LBL" VerticalAlignment="Top" />
+                    <Label Content="Street" Height="28" HorizontalAlignment="Left" Margin="6,132,0,0" Name="agencyAddressStreet_LBL" VerticalAlignment="Top" />
+                    <Label Content="City" Height="28" HorizontalAlignment="Left" Margin="222,132,0,0" Name="agencyAddressCity_LBL" VerticalAlignment="Top" />
+                    <Label Content="State" Height="28" HorizontalAlignment="Left" Margin="348,132,0,0" Name="agencyAddressState_LBL" VerticalAlignment="Top" />
+                    <Label Content="Zipcode" Height="28" HorizontalAlignment="Left" Margin="408,132,0,0" Name="agencyAddressZipcode_LBL" VerticalAlignment="Top" />
+                    <Label Content="Website URL" Height="28" HorizontalAlignment="Left" Margin="314,6,0,0" Name="agencyWebsite_LBL" VerticalAlignment="Top" />
+                    <Label Content="Rating (1-3)" Height="28" HorizontalAlignment="Left" Margin="236,6,0,0" Name="agencyRating_LBL" VerticalAlignment="Top" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="6,40,0,0" Name="agencyName_TB" VerticalAlignment="Top" Width="222" MaxLength="50" TabIndex="0" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="236,40,0,0" Name="agencyRating_TB" VerticalAlignment="Top" Width="36" MaxLength="1" TabIndex="1" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="314,40,0,0" Name="agencyWebsite_TB" VerticalAlignment="Top" Width="350" MaxLength="50" TabIndex="2" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="6,103,0,0" Name="agencyCoordinatorName_TB" VerticalAlignment="Top" Width="220" MaxLength="50" TabIndex="3" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="234,103,0,0" Name="agencyEmail_TB" VerticalAlignment="Top" Width="250" MaxLength="50" TabIndex="4" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="494,103,0,0" Name="agencyPhone_TB" VerticalAlignment="Top" Width="100" MaxLength="50" TabIndex="5" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="6,166,0,0" Name="agencyAddressStreet_TB" VerticalAlignment="Top" Width="210" MaxLength="50" TabIndex="7" />
+                    <TextBox Height="23" Margin="222,166,0,0" Name="agencyAddressCity_TB" VerticalAlignment="Top" MaxLength="50" HorizontalAlignment="Left" Width="120" TabIndex="8" />
+                    <TextBox Height="23" Margin="348,166,0,0" Name="agencyAddressState_TB" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" MaxLength="50" TabIndex="9" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="408,166,0,0" Name="agencyAddressZipcode_TB" VerticalAlignment="Top" Width="75" MaxLength="50" TabIndex="10" />
+                    <DataGrid AutoGenerateColumns="True" Margin="0,286,0,0" Name="agencySearch_DataGrid" ItemsSource="{Binding}"
 							  IsManipulationEnabled="False" CanUserAddRows="False"
 							  MouseDoubleClick="AgencySearch_DataGrid_OnMouseDoubleClick">
-						<DataGrid.ContextMenu>
-							<ContextMenu Name="agencySearch_ContextMenu">
-								<MenuItem Header="Add" Click="Add_agency_MenuItem_Click" />
-								<MenuItem Header="Edit" Click="Edit_agency_MenuItem_Click" />
-								<MenuItem Header="Delete" Click="Delete_agency_MenuItem_Click" />
-							</ContextMenu>
-						</DataGrid.ContextMenu>
-					</DataGrid>
-					<Button Content="_Search" Height="23" Margin="0,257,6,0" Name="agencySearch_BTN" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" Click="agencySearch_BTN_Click" IsDefault="True" />
-					<Button Content="_Create New" Height="23" HorizontalAlignment="Right" Margin="0,6,6,0" Name="newAgencyProfile_BTN" VerticalAlignment="Top" Width="75" Click="newAgencyProfile_BTN_Click" />
-					<Label Content="Fax" Height="28" HorizontalAlignment="Left" Margin="637,69,0,0" Name="agencyFax_LBL" VerticalAlignment="Top" />
-					<TextBox Height="23" HorizontalAlignment="Left" Margin="637,103,0,0" MaxLength="50" Name="agencyFax_TB" VerticalAlignment="Top" Width="100" TabIndex="6" />
-					<Button Content="Clear All" Height="23" HorizontalAlignment="Right" Margin="0,257,87,0" Name="agencyClear_BTN" TabIndex="10" VerticalAlignment="Top" Width="75" Click="agency_clear_BTN_Click" />
-				</Grid>
-			</TabItem>
-			<TabItem Header="Faculty" IsEnabled="False" Name="faculty_tab" />
-
-
-			<TabItem Header="Admin" Name="admin_tab" IsTabStop="False">
-				<Grid  Name="grdAminTab" >
-					<Grid Margin="0,0,0,-1" HorizontalAlignment="Left" Width="392">
-						<Button Content="Save" Height="23" Name="saveNewUser_BTN" Width="75" Click="saveUser_BTN_Click" HorizontalAlignment="Right" Margin="0,0,16,186" VerticalAlignment="Bottom" />
-						<Button Content="Delete" Height="23" HorizontalAlignment="Left" Margin="6,0,0,186" Name="deleteUser_BTN" VerticalAlignment="Bottom" Width="75" Click="deleteUser_BTN_Click" />
-						<DataGrid AutoGenerateColumns="True" Margin="6,6,15,215" Name="users_DataGrid" 
+                        <DataGrid.ContextMenu>
+                            <ContextMenu Name="agencySearch_ContextMenu">
+                                <MenuItem Header="Add" Click="Add_agency_MenuItem_Click" />
+                                <MenuItem Header="Edit" Click="Edit_agency_MenuItem_Click" />
+                                <MenuItem Header="Delete" Click="Delete_agency_MenuItem_Click" />
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                    </DataGrid>
+                    <Button Content="_Search" Height="23" Margin="0,257,6,0" Name="agencySearch_BTN" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" Click="agencySearch_BTN_Click" IsDefault="True" />
+                    <Button Content="_Create New" Height="23" HorizontalAlignment="Right" Margin="0,6,6,0" Name="newAgencyProfile_BTN" VerticalAlignment="Top" Width="75" Click="newAgencyProfile_BTN_Click" />
+                    <Label Content="Fax" Height="28" HorizontalAlignment="Left" Margin="637,69,0,0" Name="agencyFax_LBL" VerticalAlignment="Top" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="637,103,0,0" MaxLength="50" Name="agencyFax_TB" VerticalAlignment="Top" Width="100" TabIndex="6" />
+                    <Button Content="Clear All" Height="23" HorizontalAlignment="Right" Margin="0,257,87,0" Name="agencyClear_BTN" TabIndex="10" VerticalAlignment="Top" Width="75" Click="agency_clear_BTN_Click" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Faculty" IsEnabled="False" Name="faculty_tab" />
+            <TabItem Header="Admin" Name="admin_tab" IsTabStop="False">
+                <Grid  Name="grdAminTab" >
+                    <Grid Margin="0,0,0,-1" HorizontalAlignment="Left" Width="392">
+                        <Button Content="Save" Height="23" Name="saveNewUser_BTN" Width="75" Click="saveUser_BTN_Click" HorizontalAlignment="Right" Margin="0,0,16,186" VerticalAlignment="Bottom" />
+                        <Button Content="Delete" Height="23" HorizontalAlignment="Left" Margin="6,0,0,186" Name="deleteUser_BTN" VerticalAlignment="Bottom" Width="75" Click="deleteUser_BTN_Click" />
+                        <DataGrid AutoGenerateColumns="True" Margin="6,6,15,215" Name="users_DataGrid" 
                                   CanUserAddRows="True" ItemsSource="{Binding}" Width="370" />
-					</Grid>
-					<Button Content="Run Query" Height="23" HorizontalAlignment="Right" Margin="0,0,6,6" Name="runQuery_BTN" VerticalAlignment="Bottom" Width="75" Click="RunQuery_BTN_OnClick" IsDefault="True" />
-					<Grid HorizontalAlignment="Right" Name="grid1" Width="326" Margin="0,0,0,35">
-						<Label Content="Total Students" Height="28" HorizontalAlignment="Left" Margin="6,6,0,0" Name="label1" VerticalAlignment="Top" />
-						<TextBox Height="23" HorizontalAlignment="Left" Margin="242,8,0,0" Name="totalStudents_TB" VerticalAlignment="Top" Width="79" IsManipulationEnabled="True" IsReadOnly="True" />
-						<Label Content="Unduplicated Students" Height="28" HorizontalAlignment="Left" Margin="6,35,0,0" Name="label2" VerticalAlignment="Top" />
-						<TextBox Height="23" HorizontalAlignment="Left" IsManipulationEnabled="True" IsReadOnly="True" Margin="242,37,0,0" Name="unduplicatedStudents_TB" VerticalAlignment="Top" Width="79" />
-						<Label Content="Unduplicated Hours" Height="28" HorizontalAlignment="Left" Margin="6,93,0,0" Name="label3" VerticalAlignment="Top" />
-						<Label Content="Total Hours" Height="28" HorizontalAlignment="Left" Margin="6,64,0,0" Name="label4" VerticalAlignment="Top" />
-						<TextBox Height="23" HorizontalAlignment="Left" IsManipulationEnabled="True" IsReadOnly="True" Margin="242,66,0,0" Name="totalHours_TB" VerticalAlignment="Top" Width="79" />
-						<TextBox Height="23" HorizontalAlignment="Left" IsManipulationEnabled="True" IsReadOnly="True" Margin="242,95,0,0" Name="unduplicatedHours_TB" VerticalAlignment="Top" Width="79" />
-						<TextBox Height="23" HorizontalAlignment="Left" IsManipulationEnabled="True" IsReadOnly="True" Margin="242,124,0,0" Name="avgHoursStudent_TB" VerticalAlignment="Top" Width="79" />
-						<Label Content="Avg Hours Per Student" Height="28" HorizontalAlignment="Left" Margin="6,122,0,0" Name="label5" VerticalAlignment="Top" />
-						<TextBox Height="23" HorizontalAlignment="Left" IsManipulationEnabled="True" IsReadOnly="True" Margin="242,153,0,0" Name="courseCount_TB" VerticalAlignment="Top" Width="79" />
-						<Label Content="Course Count" Height="28" HorizontalAlignment="Left" Margin="6,151,0,0" Name="label6" VerticalAlignment="Top" />
-						<Label Content="Students per Class" Height="28" HorizontalAlignment="Left" Margin="164,185,0,0" Name="label7" VerticalAlignment="Top" />
-						<Label Content="Courses by Type" Height="28" HorizontalAlignment="Left" Margin="6,185,0,0" Name="label8" VerticalAlignment="Top" />
-						<DataGrid AutoGenerateColumns="True" Margin="6,219,165,52" Name="coursesByType_Datagrid" ItemsSource="{Binding}" />
-						<DataGrid AutoGenerateColumns="True" Margin="164,219,6,52" Name="dataGrid2" ItemsSource="{Binding}" />
-						<TextBox Height="23" HorizontalAlignment="Right" Margin="0,0,5,6" Name="queryYear_TB" VerticalAlignment="Bottom" Width="120" />
-						<ComboBox Height="23" HorizontalAlignment="Left" Margin="6,0,0,6" Name="querySemester_ComboBox" VerticalAlignment="Bottom" Width="120" IsEditable="True">
-							<ComboBoxItem Content="Fall" />
-							<ComboBoxItem Content="Jan" />
-							<ComboBoxItem Content="Spring" />
-						</ComboBox>
-						<Label Content="Semester" Height="28" HorizontalAlignment="Left" Margin="6,0,0,26" Name="label9" VerticalAlignment="Bottom" />
-						<Label Content="Year" Height="28" HorizontalAlignment="Right" Margin="0,0,92,26" Name="label10" VerticalAlignment="Bottom" />
-					</Grid>
-				</Grid>
-			</TabItem>
-		</TabControl>
-	</Grid>
+                    </Grid>
+                    <Button Content="Run Query" Height="23" HorizontalAlignment="Right" Margin="0,0,6,6" Name="runQuery_BTN" VerticalAlignment="Bottom" Width="75" Click="RunQuery_BTN_OnClick" IsDefault="True" />
+                    <Grid HorizontalAlignment="Right" Name="grid1" Width="326" Margin="0,0,0,35">
+                        <Label Content="Total Students" Height="28" HorizontalAlignment="Left" Margin="6,6,0,0" Name="label1" VerticalAlignment="Top" />
+                        <TextBox Height="23" HorizontalAlignment="Left" Margin="242,8,0,0" Name="totalStudents_TB" VerticalAlignment="Top" Width="79" IsManipulationEnabled="True" IsReadOnly="True" />
+                        <Label Content="Unduplicated Students" Height="28" HorizontalAlignment="Left" Margin="6,35,0,0" Name="label2" VerticalAlignment="Top" />
+                        <TextBox Height="23" HorizontalAlignment="Left" IsManipulationEnabled="True" IsReadOnly="True" Margin="242,37,0,0" Name="unduplicatedStudents_TB" VerticalAlignment="Top" Width="79" />
+                        <Label Content="Unduplicated Hours" Height="28" HorizontalAlignment="Left" Margin="6,93,0,0" Name="label3" VerticalAlignment="Top" />
+                        <Label Content="Total Hours" Height="28" HorizontalAlignment="Left" Margin="6,64,0,0" Name="label4" VerticalAlignment="Top" />
+                        <TextBox Height="23" HorizontalAlignment="Left" IsManipulationEnabled="True" IsReadOnly="True" Margin="242,66,0,0" Name="totalHours_TB" VerticalAlignment="Top" Width="79" />
+                        <TextBox Height="23" HorizontalAlignment="Left" IsManipulationEnabled="True" IsReadOnly="True" Margin="242,95,0,0" Name="unduplicatedHours_TB" VerticalAlignment="Top" Width="79" />
+                        <TextBox Height="23" HorizontalAlignment="Left" IsManipulationEnabled="True" IsReadOnly="True" Margin="242,124,0,0" Name="avgHoursStudent_TB" VerticalAlignment="Top" Width="79" />
+                        <Label Content="Avg Hours Per Student" Height="28" HorizontalAlignment="Left" Margin="6,122,0,0" Name="label5" VerticalAlignment="Top" />
+                        <TextBox Height="23" HorizontalAlignment="Left" IsManipulationEnabled="True" IsReadOnly="True" Margin="242,153,0,0" Name="courseCount_TB" VerticalAlignment="Top" Width="79" />
+                        <Label Content="Course Count" Height="28" HorizontalAlignment="Left" Margin="6,151,0,0" Name="label6" VerticalAlignment="Top" />
+                        <Label Content="Students per Class" Height="28" HorizontalAlignment="Left" Margin="164,185,0,0" Name="label7" VerticalAlignment="Top" />
+                        <Label Content="Courses by Type" Height="28" HorizontalAlignment="Left" Margin="6,185,0,0" Name="label8" VerticalAlignment="Top" />
+                        <DataGrid AutoGenerateColumns="True" Margin="6,219,165,52" Name="coursesByType_Datagrid" ItemsSource="{Binding}" />
+                        <DataGrid AutoGenerateColumns="True" Margin="164,219,6,52" Name="dataGrid2" ItemsSource="{Binding}" />
+                        <TextBox Height="23" HorizontalAlignment="Right" Margin="0,0,5,6" Name="queryYear_TB" VerticalAlignment="Bottom" Width="105" />
+                        <ComboBox Height="23" HorizontalAlignment="Left" Margin="6,0,0,6" Name="querySemester_ComboBox" VerticalAlignment="Bottom" Width="97" IsEditable="True">
+                            <ComboBoxItem Content="Fall" />
+                            <ComboBoxItem Content="Jan" />
+                            <ComboBoxItem Content="Spring" />
+                        </ComboBox>
+                        <Label Content="Semester" Height="28" HorizontalAlignment="Left" Margin="6,0,0,26" Name="label9" VerticalAlignment="Bottom" />
+                        <Label Content="Year" Height="28" HorizontalAlignment="Right" Margin="0,0,81,26" Name="label10" VerticalAlignment="Bottom" />
+                        <TextBox Height="23" HorizontalAlignment="Right" Margin="0,0,116,6" x:Name="queryPrefix_TB" VerticalAlignment="Bottom" Width="101" />
+                        <Label Content="Course Number" Height="28" HorizontalAlignment="Right" Margin="0,0,128,26" x:Name="label10_Copy" VerticalAlignment="Bottom" Width="93" />
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
 </Window>
