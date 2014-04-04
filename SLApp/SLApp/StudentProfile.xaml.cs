@@ -338,18 +338,6 @@ namespace SLApp_Beta
                                 MessageBoxImage.Exclamation);
                 return false;
             }
-            else if (expROW.TypeofLearning != "Discipline-Based" && expROW.TypeofLearning != "Problem-Based" &&
-                     expROW.TypeofLearning != "Pure Service" && expROW.TypeofLearning != "Service Internship" &&
-                     expROW.TypeofLearning != "Community Based Research" && expROW.TypeofLearning != "Capstone Class"
-                && expROW.TypeofLearning != "")
-            {
-                MessageBox.Show("Entry in Type of Learning column invalid.\n" +
-                    "Valid entries are blank, 'Discipline-Based', 'Problem-Based', 'Pure Service',\n" +
-                "'Service Internship', 'Community Based Research', or 'Capstone Class'",
-                                "Datagrid Row Error", MessageBoxButton.OK,
-                                MessageBoxImage.Exclamation);
-                return false;
-            }
 			else if (expROW.Section.Equals(null))
 			{
 				MessageBox.Show("Must enter course section!", "Datagrid Row Error", MessageBoxButton.OK,
