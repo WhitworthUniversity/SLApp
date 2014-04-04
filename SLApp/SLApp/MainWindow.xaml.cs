@@ -639,6 +639,14 @@ namespace SLApp_Beta
 
 		#endregion
 
+        private void users_DataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName == "Password")
+            {
+                e.Column.Width = new DataGridLength(80);
+            }
+        }
+
 
 
 

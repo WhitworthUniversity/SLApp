@@ -11,34 +11,34 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-		<Menu Height="23" Name="mainWindowMenu" Grid.ColumnSpan="2">
-			<MenuItem Header="_File" IsTabStop="False">
-				<MenuItem Name="logoffMenuItem" Header="LogOff" Click="logoffMenuItem_Click" />
-				<MenuItem Header="Exit" Click="menuExit_Click" />
-			</MenuItem>
-			<MenuItem Header="_Help" IsTabStop="False">
-				<MenuItem Name="manualMenuItem" Header="View Help" Click="manualMenuItem_Click" />
-				<MenuItem Name="aboutMenuItem" Header="About" Click="aboutMenuItem_Click" />
-			</MenuItem>
-		</Menu>
-		<TabControl HorizontalAlignment="Stretch" Name="tabControl1" VerticalAlignment="Stretch" DataContext="{Binding}" TabStripPlacement="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1" Margin="-1,5,1,-5" Grid.ColumnSpan="2">
-			<TabItem Header="Student" Name="student_tab" IsTabStop="False">
-				<Grid x:Name="grdStudentTab">
-					<TextBox Height="28" HorizontalAlignment="Left" Margin="132,10,0,0" Name="studentID_TB" VerticalAlignment="Top" Width="120"
+        <Menu Height="23" Name="mainWindowMenu" Grid.ColumnSpan="2">
+            <MenuItem Header="_File" IsTabStop="False">
+                <MenuItem Name="logoffMenuItem" Header="LogOff" Click="logoffMenuItem_Click" />
+                <MenuItem Header="Exit" Click="menuExit_Click" />
+            </MenuItem>
+            <MenuItem Header="_Help" IsTabStop="False">
+                <MenuItem Name="manualMenuItem" Header="View Help" Click="manualMenuItem_Click" />
+                <MenuItem Name="aboutMenuItem" Header="About" Click="aboutMenuItem_Click" />
+            </MenuItem>
+        </Menu>
+        <TabControl HorizontalAlignment="Stretch" Name="tabControl1" VerticalAlignment="Stretch" DataContext="{Binding}" TabStripPlacement="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1" Margin="0,5,0,-5" Grid.ColumnSpan="2">
+            <TabItem Header="Student" Name="student_tab" IsTabStop="False">
+                <Grid x:Name="grdStudentTab">
+                    <TextBox Height="28" HorizontalAlignment="Left" Margin="132,10,0,0" Name="studentID_TB" VerticalAlignment="Top" Width="120"
 							 DataContext="{Binding}" MaxLength="7" TabIndex="0" VerticalContentAlignment="Center">
-					</TextBox>
-					<TextBox Height="28" HorizontalAlignment="Left" Margin="132,76,0,0" Name="studentLastName_TB" VerticalAlignment="Top" Width="120" MaxLength="50" TabIndex="1" VerticalContentAlignment="Center" />
-					<TextBox Height="28" HorizontalAlignment="Left" Margin="132,43,0,0" Name="studentFirstName_TB" VerticalAlignment="Top" Width="120" MaxLength="50" TabIndex="2" VerticalContentAlignment="Center" />
-					<TextBox Height="28" HorizontalAlignment="Left" Margin="132,109,0,0" Name="studentEmail_TB" VerticalAlignment="Top" Width="120" IsEnabled="True" MaxLength="50" TabIndex="3" VerticalContentAlignment="Center" />
-					<TextBox Height="28" HorizontalAlignment="Left" Margin="132,142,0,0" Name="graduationYear_TB" VerticalAlignment="Top" Width="120" TabIndex="4" MaxLength="4" VerticalContentAlignment="Center" />
-					<Button Content="_Create New" Height="160" HorizontalAlignment="Right" Margin="0,10,10,0" Name="newStudentProfile_BTN" VerticalAlignment="Top" Width="156" Click="newStudentProfile_BTN_Click" />
-					<Label Content="Student ID" Height="28" HorizontalAlignment="Left" Margin="6,10,0,0" Name="studentID_LBL" VerticalAlignment="Top" />
-					<Label Content="Last Name" Height="28" HorizontalAlignment="Left" Margin="6,76,0,0" Name="studentLastName_LBL" VerticalAlignment="Top" />
-					<Label Content="Graduation Year" Height="28" HorizontalAlignment="Left" Margin="6,142,0,0" Name="studentGraduationYear_LBL" VerticalAlignment="Top" />
-					<Label Content="Email" Height="28" HorizontalAlignment="Left" Margin="6,109,0,0" Name="studentMiddleName_LBL" VerticalAlignment="Top" IsEnabled="True" />
-					<Label Content="First Name" Height="28" HorizontalAlignment="Left" Margin="6,43,0,0" Name="studentFirstName_LBL" VerticalAlignment="Top" />
-					<Button Content="_Search" Height="23" HorizontalAlignment="Right" Margin="0,180,10,0" Name="studentSearch_BTN" VerticalAlignment="Top" Width="75" Click="studentSearch_BTN_Click" TabIndex="10" IsDefault="True" />
-					<DataGrid AutoGenerateColumns="True" Name="studentSearch_DataGrid" Margin="10,208,0,10" ItemsSource="{Binding}"
+                    </TextBox>
+                    <TextBox Height="28" HorizontalAlignment="Left" Margin="132,76,0,0" Name="studentLastName_TB" VerticalAlignment="Top" Width="120" MaxLength="50" TabIndex="1" VerticalContentAlignment="Center" />
+                    <TextBox Height="28" HorizontalAlignment="Left" Margin="132,43,0,0" Name="studentFirstName_TB" VerticalAlignment="Top" Width="120" MaxLength="50" TabIndex="2" VerticalContentAlignment="Center" />
+                    <TextBox Height="28" HorizontalAlignment="Left" Margin="132,109,0,0" Name="studentEmail_TB" VerticalAlignment="Top" Width="120" IsEnabled="True" MaxLength="50" TabIndex="3" VerticalContentAlignment="Center" />
+                    <TextBox Height="28" HorizontalAlignment="Left" Margin="132,142,0,0" Name="graduationYear_TB" VerticalAlignment="Top" Width="120" TabIndex="4" MaxLength="4" VerticalContentAlignment="Center" />
+                    <Button Content="_Create New" Height="160" HorizontalAlignment="Right" Margin="0,10,10,0" Name="newStudentProfile_BTN" VerticalAlignment="Top" Width="156" Click="newStudentProfile_BTN_Click" />
+                    <Label Content="Student ID" Height="28" HorizontalAlignment="Left" Margin="6,10,0,0" Name="studentID_LBL" VerticalAlignment="Top" />
+                    <Label Content="Last Name" Height="28" HorizontalAlignment="Left" Margin="6,76,0,0" Name="studentLastName_LBL" VerticalAlignment="Top" />
+                    <Label Content="Graduation Year" Height="28" HorizontalAlignment="Left" Margin="6,142,0,0" Name="studentGraduationYear_LBL" VerticalAlignment="Top" />
+                    <Label Content="Email" Height="28" HorizontalAlignment="Left" Margin="6,109,0,0" Name="studentMiddleName_LBL" VerticalAlignment="Top" IsEnabled="True" />
+                    <Label Content="First Name" Height="28" HorizontalAlignment="Left" Margin="6,43,0,0" Name="studentFirstName_LBL" VerticalAlignment="Top" />
+                    <Button Content="_Search" Height="23" HorizontalAlignment="Right" Margin="0,180,10,0" Name="studentSearch_BTN" VerticalAlignment="Top" Width="75" Click="studentSearch_BTN_Click" TabIndex="10" IsDefault="True" />
+                    <DataGrid AutoGenerateColumns="True" Name="studentSearch_DataGrid" Margin="10,208,0,10" ItemsSource="{Binding}"
                               MouseDoubleClick="StudentSearch_DataGrid_OnMouseDoubleClick" IsReadOnly="True" 
                               IsManipulationEnabled="False" VerticalScrollBarVisibility="Visible" TabIndex="11" AutoGeneratingColumn="studentSearch_DataGrid_AutoGeneratingColumn" HorizontalAlignment="Left" Width="966">
                         <DataGrid.ContextMenu>
@@ -126,10 +126,10 @@
             <TabItem Header="Admin" Name="admin_tab" IsTabStop="False">
                 <Grid  Name="grdAminTab" >
                     <Grid Margin="0,0,0,-1" HorizontalAlignment="Left" Width="392">
-                        <Button Content="Save" Height="23" Name="saveNewUser_BTN" Width="75" Click="saveUser_BTN_Click" HorizontalAlignment="Right" Margin="0,0,16,186" VerticalAlignment="Bottom" />
-                        <Button Content="Delete" Height="23" HorizontalAlignment="Left" Margin="6,0,0,186" Name="deleteUser_BTN" VerticalAlignment="Bottom" Width="75" Click="deleteUser_BTN_Click" />
-                        <DataGrid AutoGenerateColumns="True" Margin="6,6,15,215" Name="users_DataGrid" 
-                                  CanUserAddRows="True" ItemsSource="{Binding}" Width="370" />
+                        <Button Content="Save" Height="23" Name="saveNewUser_BTN" Width="75" Click="saveUser_BTN_Click" HorizontalAlignment="Right" Margin="0,0,-219,53" VerticalAlignment="Bottom" />
+                        <Button Content="Delete" Height="23" HorizontalAlignment="Left" Margin="442,0,-125,53" Name="deleteUser_BTN" VerticalAlignment="Bottom" Width="75" Click="deleteUser_BTN_Click" />
+                        <DataGrid AutoGenerateColumns="True" Margin="6,6,-219,81" Name="users_DataGrid" 
+                                  CanUserAddRows="True" ItemsSource="{Binding}" AutoGeneratingColumn="users_DataGrid_AutoGeneratingColumn" CellEditEnding="users_DataGrid_CellEditEnding" />
                     </Grid>
                     <Button Content="Run Query" Height="23" HorizontalAlignment="Right" Margin="0,0,6,6" Name="runQuery_BTN" VerticalAlignment="Bottom" Width="75" Click="RunQuery_BTN_OnClick" IsDefault="True" />
                     <Grid HorizontalAlignment="Right" Name="grid1" Width="326" Margin="0,0,0,35">
