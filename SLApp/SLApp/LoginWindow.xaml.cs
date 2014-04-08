@@ -25,27 +25,30 @@ namespace SLApp_Beta
                         {
                                 using(PubsDataContext db = new PubsDataContext())
                                 {
-                                    var user = (from u in db.Application_Users
+                                    var users = (from u in db.Application_Users
                                                  where u.Username == username_TB.Text
-                                                 select u).Distinct().First();
+                                                 select u).Distinct();
 
-                                                                                
+                                    if (users.Count() > 0)
+                                    {
+                                        var user = users.First();
                                         if (pwMethods.verifyPassword(user.Password, password_TB.Password))
                                         {
-                                                isAdmin = user.IsAdmin;
-                                                MainWindow main = new MainWindow(isAdmin);
-                                                main.Show();
-                                                Close();
+                                            isAdmin = user.IsAdmin;
+                                            MainWindow main = new MainWindow(isAdmin);
+                                            main.Show();
+                                            Close();
                                         }
-                                        //else if (loginAttempts >= 5)
-                                        //{
-                                        //        ; // TODO: feature- lockout user after 5 loginAttempts
-                                        //}
-                                        else
-                                        {
-                                                MessageBox.Show("Username or Password does not match!", "Login Error", MessageBoxButton.OK, MessageBoxImage.Stop);
-                                                loginAttempts++;
-                                        }
+                                    }
+                                    //else if (loginAttempts >= 5)
+                                    //{
+                                    //        ; // TODO: feature- lockout user after 5 loginAttempts
+                                    //}
+                                    else
+                                    {
+                                            MessageBox.Show("Invalid Login Credentials", "Login Error", MessageBoxButton.OK, MessageBoxImage.Stop);
+                                            loginAttempts++;
+                                    }
 
                                 }
                         }
