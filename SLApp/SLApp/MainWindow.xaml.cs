@@ -6,6 +6,7 @@ using System.Windows.Input;
 using System.Collections.Generic;
 using System.Data;
 
+
 namespace SLApp_Beta
 {
 
@@ -45,16 +46,24 @@ namespace SLApp_Beta
 			
 			InitializeComponent();
             IsAdmin = isAdmin;
-            if(!isAdmin)
-            {
-                admin_tab.IsEnabled = false;
+			if (!isAdmin)
+			{
+				admin_tab.IsEnabled = false;
 				agencyRating_LBL.Visibility = Visibility.Hidden;
 				agencyRating_TB.Visibility = Visibility.Hidden;
-	            newAgencyProfile_BTN.IsEnabled = false;
-	            newAgencyProfile_BTN.Visibility = Visibility.Hidden;
-            }
+				newAgencyProfile_BTN.IsEnabled = false;
+				newAgencyProfile_BTN.Visibility = Visibility.Hidden;
+
+			}
+			else
+			{
+				CheckBirthdays(); // Birthday Tracker Alert only for the admin
+			}
 			DatabaseMethods dbMethods = new DatabaseMethods();
             LoadUsers(users_DataGrid);
+
+			
+
 
 		}
 
@@ -349,6 +358,58 @@ namespace SLApp_Beta
 
 		#region Admin Tab
 
+		private void CheckBirthdays()
+		{
+			// Three text alerts for birthdays
+			// 1 - the week before the birthday
+			// 2 - the day before the birthday
+			// 3 - the day of the birthday
+			// Query all users to select First Name, Last Name, Birthday
+			//    from the users table where birthday = X day(s)
+			//    Send alert if there is a valid match
+
+			if (dbMethods.CheckDatabaseConnection())
+			{
+				using (PubsDataContext db = new PubsDataContext())
+				{
+
+					var Allusers = new List<Application_User>(from users in db.Application_Users
+                                                              select users);
+
+					int DateToday = DateTime.Today.DayOfYear;
+					int DateTomorrow = DateTime.Today.DayOfYear + 1;
+					int DateNextWeek = DateTime.Today.DayOfYear + 7;
+
+					foreach (Application_User user in Allusers){
+						if (user.Birthdate != null)
+						{
+							int birthday = user.Birthdate.Value.DayOfYear - 1; // Set the user's birthday to a numeric value, -1 appearing for off-by-one database/timezone(maybe?) error
+	
+							// Check today's date for birthdays
+							if (DateToday == birthday)
+							{
+								// Today someone has a birthday!
+								MessageBox.Show(user.FirstName + " " + user.LastName + "'s birthday is today!", "Birthday Tracker!");
+							}
+
+							else if (DateTomorrow == birthday)
+							{
+								// Tomorrow someone has a birthday!
+								MessageBox.Show(user.FirstName + " " + user.LastName + "'s birthday is tomorrow!", "Birthday Tracker!");
+							}
+
+							else if (DateNextWeek == birthday)
+							{
+								// Next week someone has a birthday!
+								MessageBox.Show(user.FirstName + " " + user.LastName + "'s birthday is a week away!", "Birthday Tracker!");
+							}
+						}
+					}
+
+				}
+			}
+		}
+
         private void LoadUsers(DataGrid dg)
         {
             if (dbMethods.CheckDatabaseConnection())
@@ -479,11 +540,11 @@ namespace SLApp_Beta
 				{
 					var totalstudents = new List<Student>(from s in db.Students
 														  from e in db.Learning_Experiences
-														  where e.Student_ID == s.Student_ID &&
+														  where e.Student_ID == s.Student_ID && e.TotalHours.Value != 0 &&
 														  (queryYear_TB.Text.Length == 0 || e.Year.ToString() == queryYear_TB.Text) &&
 														  (querySemester_ComboBox.Text.Length == 0 || e.Semester == querySemester_ComboBox.Text) &&
                                                           (queryPrefix_TB.Text.Length == 0 || e.CourseNumber.ToString() == queryPrefix_TB.Text)
-					                                  select s);
+					                                  select s); 
 					totalStudents_TB.Text = totalstudents.Count().ToString();
 				}
 			}
