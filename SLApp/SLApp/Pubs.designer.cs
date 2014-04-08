@@ -363,11 +363,11 @@ namespace SLApp_Beta
 		private string _Username;
 		
 		private string _Password;
-		
+
 		private string _FirstName;
-		
+
 		private string _LastName;
-		
+
 		private System.Nullable<System.DateTime> _Birthdate;
 		
 		private bool _IsAdmin;

@@ -396,10 +396,16 @@ namespace SLApp_Beta
                                 exp.TimeLog = expROW.TimeLog;
                                 exp.TotalHours = expROW.TotalHours;
                                 exp.TypeofLearning = expROW.TypeofLearning;
-
-                                db.Learning_Experiences.InsertOnSubmit(exp);
-                                db.SubmitChanges();
+								
+								//The bottom three object variables were missing in this else statemenet == Fixes the problem of the second entry not saving properly
+								exp.Section = expROW.Section;
+								exp.Professor = expROW.Professor;
+								exp.CourseName = expROW.CourseName;
+                               
+								db.Learning_Experiences.InsertOnSubmit(exp);
+                                db.SubmitChanges();	
                                 LoadStudentLearningExperiences();
+							
                             }
                         }
                     }
