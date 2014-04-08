@@ -62,6 +62,7 @@
                         <ComboBoxItem Content="Problem-Based" />
                         <ComboBoxItem Content="Pure Service" />
                         <ComboBoxItem Content="Service Internship" />
+                        <ComboBoxItem Content="Educational Field Placement" />
                     </ComboBox>
                     <Label Content="Professor" Height="28" HorizontalAlignment="Left" Margin="339,109,0,0" Name="professor_LBL" VerticalAlignment="Top" IsEnabled="True" />
                     <TextBox Height="27" HorizontalAlignment="Left" IsEnabled="True" Margin="514,110,0,0" Name="professor_TB" VerticalAlignment="Top" Width="120" MaxLength="50" TabIndex="10" VerticalContentAlignment="Center" />
