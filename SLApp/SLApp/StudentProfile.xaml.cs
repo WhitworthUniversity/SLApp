@@ -108,26 +108,18 @@ namespace SLApp_Beta
 			InitializeComponent();
 
             if (isAdmin == false) studentNotes_DataGrid.IsEnabled = false;
-#if Demo
-			studentID_TB.Visibility = Visibility.Hidden;
-#endif
 
             LoadStudentLearningExperiences();
-		}
 
-		public StudentProfile(Student stud, bool isAdmin, bool IsEdit)
-		{
-			InitializeComponent();
             using (PubsDataContext db = new PubsDataContext())
             {
                 servicelearningtype = (from type in db.Service_Learning_Types
                                        select type.Name).AsEnumerable().ToArray();
             }
-			if (isAdmin == false)studentNotes_DataGrid.IsEnabled = false;
-#if Demo
-			studentID_TB.Visibility = Visibility.Hidden;
-#endif
+		}
 
+		public StudentProfile(Student stud, bool isAdmin, bool IsEdit) : this(isAdmin)
+		{
 			student = stud;
 
 			this.studentFirstName_TB.Text = stud.FirstName;

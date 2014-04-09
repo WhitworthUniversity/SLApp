@@ -82,7 +82,7 @@ namespace SLApp_Beta
 
         private void manualMenuItem_Click(object sender, RoutedEventArgs e)
         {
-             UserDocumentation manual = new UserDocumentation();
+            UserDocumentation manual = new UserDocumentation();
 			manual.Show();
         }
 
